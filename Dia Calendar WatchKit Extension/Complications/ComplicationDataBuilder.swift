@@ -17,35 +17,38 @@ private enum ComplicationEmphasis: String {
 
 final class ComplicationDataBuilder {
 
-    private let calendar: Calendar
-
     var timelineEndDate: Date? { .distantFuture }
+
+    private let emphasisColor: UIColor = .orange
+
+    private let calendar: Calendar
 
     init(calendar: Calendar) {
         self.calendar = calendar
     }
 
     func createComplicationDescriptors() -> [CLKComplicationDescriptor] {
-        [
+        let supportedFamilies: [CLKComplicationFamily] = [.circularSmall, .modularSmall]
+        return [
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .month),
                 displayName: "Month & Date",
-                supportedFamilies: [.circularSmall]
+                supportedFamilies: supportedFamilies
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
                 displayName: "Weekday & Date",
-                supportedFamilies: [.circularSmall]
+                supportedFamilies: supportedFamilies
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: [.circularSmall]
+                supportedFamilies: supportedFamilies
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekProgress),
                 displayName: "Progress",
-                supportedFamilies: [.circularSmall]
+                supportedFamilies: supportedFamilies
             ),
         ]
     }
@@ -77,8 +80,8 @@ final class ComplicationDataBuilder {
     func createTemplate(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTemplate? {
         let identifier = ComplicationEmphasis(rawValue: complication.identifier)
         switch complication.family {
-//        case .modularSmall:
-//            return createModularSmallTemplate(forDate: date)
+        case .modularSmall:
+            return createModularSmallTemplate(forDate: date, withIdentifier: identifier)
 //        case .modularLarge:
 //            return createModularLargeTemplate(forDate: date)
 //        case .utilitarianSmall, .utilitarianSmallFlat:
@@ -110,35 +113,66 @@ final class ComplicationDataBuilder {
         emphasis.rawValue
     }
 
-    private func createCircularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
-        var template: CLKComplicationTemplate?
+    private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
         switch identifier {
         case .weekday:
-            template = CLKComplicationTemplateCircularSmallStackText(
-                line1TextProvider: CLKDateTextProvider(date: date, units: .weekday),
-                line2TextProvider: CLKDateTextProvider(date: date, units: .day)
+            let template = CLKComplicationTemplateModularSmallStackText(
+                line1TextProvider: .weekday(date),
+                line2TextProvider: .day(date)
+            )
+            template.tintColor = emphasisColor
+            return template
+        case .month:
+            let template = CLKComplicationTemplateModularSmallStackText(
+                line1TextProvider: .month(date),
+                line2TextProvider: .day(date)
+            )
+            template.tintColor = emphasisColor
+            return template
+        case .day:
+            return CLKComplicationTemplateModularSmallSimpleText(textProvider: .day(date))
+        case .weekProgress:
+            let fraction = weekFraction(date: date)
+            let dayTextProvider: CLKDateTextProvider = .day(date)
+            dayTextProvider.tintColor = .white
+            let template = CLKComplicationTemplateModularSmallRingText(
+                textProvider: dayTextProvider,
+                fillFraction: fraction,
+                ringStyle: .open
+            )
+            template.tintColor = weekColor(fraction: fraction)
+            return template
+        case .none:
+            return nil
+        }
+    }
+
+    private func createCircularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+        switch identifier {
+        case .weekday:
+            return CLKComplicationTemplateCircularSmallStackText(
+                line1TextProvider: .weekday(date),
+                line2TextProvider: .day(date)
             )
         case .month:
-            template = CLKComplicationTemplateCircularSmallStackText(
-                line1TextProvider: CLKDateTextProvider(date: date, units: .month),
-                line2TextProvider: CLKDateTextProvider(date: date, units: .day)
+            return CLKComplicationTemplateCircularSmallStackText(
+                line1TextProvider: .month(date),
+                line2TextProvider: .day(date)
             )
         case .weekProgress:
             let fraction = weekFraction(date: date)
-            template = CLKComplicationTemplateCircularSmallRingText(
-                textProvider: CLKDateTextProvider(date: date, units: .day),
+            let template = CLKComplicationTemplateCircularSmallRingText(
+                textProvider: .day(date),
                 fillFraction: fraction,
                 ringStyle: .closed
             )
-            template?.tintColor = weekColor(fraction: fraction)
+            template.tintColor = weekColor(fraction: fraction)
+            return template
         case .day:
-            template = CLKComplicationTemplateCircularSmallSimpleText(
-                textProvider: CLKDateTextProvider(date: date, units: .day)
-            )
+            return CLKComplicationTemplateCircularSmallSimpleText(textProvider: .day(date))
         case .none:
-            break
+            return nil
         }
-        return template
     }
 
     private func weekFraction(date: Date) -> Float {
@@ -150,7 +184,7 @@ final class ComplicationDataBuilder {
     }
 
     private func weekColor(fraction: Float) -> UIColor {
-        let beginning: Float = 1/7
+        let beginning: Float = 2/7
         let ending: Float = 5/7
         switch fraction {
         case ...beginning:
@@ -160,6 +194,22 @@ final class ComplicationDataBuilder {
         default:
             return .red
         }
+    }
+
+}
+
+private extension CLKTextProvider {
+
+    static func day(_ date: Date) -> CLKDateTextProvider {
+        CLKDateTextProvider(date: date, units: .day)
+    }
+
+    static func weekday(_ date: Date) -> CLKDateTextProvider {
+        CLKDateTextProvider(date: date, units: .weekday)
+    }
+
+    static func month(_ date: Date) -> CLKDateTextProvider {
+        CLKDateTextProvider(date: date, units: .month)
     }
 
 }
