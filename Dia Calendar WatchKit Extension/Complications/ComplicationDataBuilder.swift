@@ -33,12 +33,12 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .month),
                 displayName: "Month & Date",
-                supportedFamilies: smallFamilies + [.extraLarge]
+                supportedFamilies: smallFamilies + [.extraLarge] + [.utilitarianLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
                 displayName: "Weekday & Date",
-                supportedFamilies: smallFamilies + [.extraLarge]
+                supportedFamilies: smallFamilies + [.extraLarge] + [.utilitarianLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekProgress),
@@ -48,7 +48,7 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + [.extraLarge] + [.modularLarge]
+                supportedFamilies: smallFamilies + [.extraLarge] + [.modularLarge] + [.utilitarianLarge]
             ),
         ]
     }
@@ -86,8 +86,8 @@ final class ComplicationDataBuilder {
             return createModularLargeTemplate(forDate: date, withIdentifier: identifier)
         case .utilitarianSmall, .utilitarianSmallFlat:
             return createUtilitarianSmallFlatTemplate(forDate: date, withIdentifier: identifier)
-//        case .utilitarianLarge:
-//            return createUtilitarianLargeTemplate(forDate: date)
+        case .utilitarianLarge:
+            return createUtilitarianLargeTemplate(forDate: date, withIdentifier: identifier)
         case .circularSmall:
             return createCircularSmallTemplate(forDate: date, withIdentifier: identifier)
         case .extraLarge:
@@ -126,7 +126,6 @@ final class ComplicationDataBuilder {
             return nil
         }
     }
-
 
     /// hint: can play with colors
     private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
@@ -178,6 +177,20 @@ final class ComplicationDataBuilder {
                 ringStyle: .open
             )
         case .none:
+            assertionFailure()
+            return nil
+        }
+    }
+
+    private func createUtilitarianLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+        switch identifier {
+        case .month:
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .month]))
+        case .weekday:
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday]))
+        case .day:
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday, .month]))
+        case .none, .weekProgress:
             assertionFailure()
             return nil
         }
