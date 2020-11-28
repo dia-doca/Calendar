@@ -19,7 +19,7 @@ final class ComplicationDataBuilder {
 
     var timelineEndDate: Date? { .distantFuture }
 
-    private let emphasisColor: UIColor = .orange
+    private let emphasisColor: UIColor = .init(red: 0.9, green: 0.1, blue: 0.1, alpha: 1)
 
     private let calendar: Calendar
 
@@ -29,17 +29,16 @@ final class ComplicationDataBuilder {
 
     func createComplicationDescriptors() -> [CLKComplicationDescriptor] {
         let smallFamilies: [CLKComplicationFamily] = [.circularSmall, .modularSmall, .utilitarianSmall]
-        let largeFamilies: [CLKComplicationFamily] = [.extraLarge]
         return [
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .month),
                 displayName: "Month & Date",
-                supportedFamilies: smallFamilies + largeFamilies
+                supportedFamilies: smallFamilies + [.extraLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
                 displayName: "Weekday & Date",
-                supportedFamilies: smallFamilies + largeFamilies
+                supportedFamilies: smallFamilies + [.extraLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekProgress),
@@ -49,7 +48,7 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + largeFamilies
+                supportedFamilies: smallFamilies + [.extraLarge] + [.modularLarge]
             ),
         ]
     }
@@ -83,8 +82,8 @@ final class ComplicationDataBuilder {
         switch complication.family {
         case .modularSmall:
             return createModularSmallTemplate(forDate: date, withIdentifier: identifier)
-//        case .modularLarge:
-//            return createModularLargeTemplate(forDate: date)
+        case .modularLarge:
+            return createModularLargeTemplate(forDate: date, withIdentifier: identifier)
         case .utilitarianSmall, .utilitarianSmallFlat:
             return createUtilitarianSmallFlatTemplate(forDate: date, withIdentifier: identifier)
 //        case .utilitarianLarge:
@@ -114,19 +113,34 @@ final class ComplicationDataBuilder {
         emphasis.rawValue
     }
 
+    private func createModularLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+        switch identifier {
+        case .day:
+            let template = CLKComplicationTemplateModularLargeTallBody(
+                headerTextProvider: .month(date, tintColor: emphasisColor),
+                bodyTextProvider: .dayWeekday(date)
+            )
+            return template
+        case .none, .month, .weekday, .weekProgress:
+            assertionFailure()
+            return nil
+        }
+    }
+
+
     /// hint: can play with colors
     private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
             let template = CLKComplicationTemplateModularSmallStackText(
-                line1TextProvider: .month(date),
+                line1TextProvider: .month(date, uppercased: true),
                 line2TextProvider: .day(date)
             )
             template.tintColor = emphasisColor
             return template
         case .weekday:
             let template = CLKComplicationTemplateModularSmallStackText(
-                line1TextProvider: .weekday(date),
+                line1TextProvider: .weekday(date, uppercased: true),
                 line2TextProvider: .day(date)
             )
             template.tintColor = emphasisColor
@@ -250,6 +264,10 @@ private extension CLKTextProvider {
 
     static func day(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
         createDateProvider(date: date, units: .day, tintColor: tintColor)
+    }
+
+    static func dayWeekday(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
+        createDateProvider(date: date, units: [.day, .weekday], tintColor: tintColor)
     }
 
     static func weekday(_ date: Date, tintColor: UIColor? = nil, uppercased: Bool? = nil) -> CLKDateTextProvider {
