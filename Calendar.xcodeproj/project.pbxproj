@@ -32,6 +32,7 @@
 		21AA3E78256C36B300A2291D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253AA256914B900FC22DB /* CalendarView.swift */; };
 		21AA3E7E256C36BE00A2291D /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253B6256AE2FB00FC22DB /* Scheme.swift */; };
 		21AA3E84256C36C100A2291D /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253B1256A7D0600FC22DB /* Calendar+Extension.swift */; };
+		21BA513025718D310040C220 /* ComplicationDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA512F25718D310040C220 /* ComplicationDataBuilder.swift */; };
 		21DC4EB6256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
 		21DC4EB7256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
 		21DC4EB8256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
@@ -123,6 +124,7 @@
 		21AA3E64256C35B000A2291D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21AA3E66256C35B000A2291D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21AA3E67256C35B000A2291D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		21BA512F25718D310040C220 /* ComplicationDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationDataBuilder.swift; sourceTree = "<group>"; };
 		21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateLabel.swift; sourceTree = "<group>"; };
 		21DC4ECA256D7B2F0087AB27 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		21DC4ED3256D7B470087AB27 /* CalendarBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBodyView.swift; sourceTree = "<group>"; };
@@ -221,11 +223,11 @@
 		21AA3E56256C35B000A2291D /* Dia Calendar WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				21BA513D25718D8D0040C220 /* Complications */,
 				21AA3E57256C35B000A2291D /* CalendarApp.swift */,
 				21AA3E59256C35B000A2291D /* ContentView.swift */,
 				21AA3E5B256C35B000A2291D /* NotificationController.swift */,
 				21AA3E5D256C35B000A2291D /* NotificationView.swift */,
-				21AA3E5F256C35B000A2291D /* ComplicationController.swift */,
 				21AA3E61256C35B000A2291D /* Assets.xcassets */,
 				21AA3E66256C35B000A2291D /* Info.plist */,
 				21AA3E67256C35B000A2291D /* PushNotificationPayload.apns */,
@@ -252,6 +254,15 @@
 				21DC4EF8256D92270087AB27 /* Font+Extension.swift */,
 			);
 			path = DiaCalendar;
+			sourceTree = "<group>";
+		};
+		21BA513D25718D8D0040C220 /* Complications */ = {
+			isa = PBXGroup;
+			children = (
+				21AA3E5F256C35B000A2291D /* ComplicationController.swift */,
+				21BA512F25718D310040C220 /* ComplicationDataBuilder.swift */,
+			);
+			path = Complications;
 			sourceTree = "<group>";
 		};
 		21DC4EBE256D7A120087AB27 /* Modifiers */ = {
@@ -518,6 +529,7 @@
 				21AA3E84256C36C100A2291D /* Calendar+Extension.swift in Sources */,
 				21DC4EFB256D92270087AB27 /* Font+Extension.swift in Sources */,
 				21DC4ED6256D7B470087AB27 /* CalendarBodyView.swift in Sources */,
+				21BA513025718D310040C220 /* ComplicationDataBuilder.swift in Sources */,
 				21AA3E58256C35B000A2291D /* CalendarApp.swift in Sources */,
 				21AA3E5E256C35B000A2291D /* NotificationView.swift in Sources */,
 			);
