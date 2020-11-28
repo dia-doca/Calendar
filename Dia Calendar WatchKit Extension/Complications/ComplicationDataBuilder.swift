@@ -29,16 +29,17 @@ final class ComplicationDataBuilder {
 
     func createComplicationDescriptors() -> [CLKComplicationDescriptor] {
         let smallFamilies: [CLKComplicationFamily] = [.circularSmall, .modularSmall, .utilitarianSmall]
+        let largeFamilies: [CLKComplicationFamily] = [.extraLarge, .modularLarge, .utilitarianLarge]
         return [
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .month),
                 displayName: "Month & Date",
-                supportedFamilies: smallFamilies + [.extraLarge] + [.utilitarianLarge]
+                supportedFamilies: smallFamilies + [.utilitarianLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
                 displayName: "Weekday & Date",
-                supportedFamilies: smallFamilies + [.extraLarge] + [.utilitarianLarge]
+                supportedFamilies: smallFamilies + [.utilitarianLarge]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekProgress),
@@ -48,7 +49,7 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + [.extraLarge] + [.modularLarge] + [.utilitarianLarge]
+                supportedFamilies: smallFamilies + largeFamilies
             ),
         ]
     }
@@ -114,17 +115,10 @@ final class ComplicationDataBuilder {
     }
 
     private func createModularLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
-        switch identifier {
-        case .day:
-            let template = CLKComplicationTemplateModularLargeTallBody(
-                headerTextProvider: .month(date, tintColor: emphasisColor),
-                bodyTextProvider: .dayWeekday(date)
-            )
-            return template
-        case .none, .month, .weekday, .weekProgress:
-            assertionFailure()
-            return nil
-        }
+        CLKComplicationTemplateModularLargeTallBody(
+            headerTextProvider: .month(date, tintColor: emphasisColor),
+            bodyTextProvider: .dayWeekday(date)
+        )
     }
 
     /// hint: can play with colors
@@ -227,27 +221,7 @@ final class ComplicationDataBuilder {
     }
 
     private func createExtraLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
-        switch identifier {
-        case .month:
-            let template =  CLKComplicationTemplateExtraLargeStackText(
-                line1TextProvider: .month(date, uppercased: true),
-                line2TextProvider: .day(date)
-            )
-            template.highlightLine2 = true
-            return template
-        case .weekday:
-            let template = CLKComplicationTemplateExtraLargeStackText(
-                line1TextProvider: .weekday(date, uppercased: true),
-                line2TextProvider: .day(date)
-            )
-            template.highlightLine2 = true
-            return template
-        case .day:
-            return CLKComplicationTemplateExtraLargeSimpleText(textProvider: .day(date))
-        case .none, .weekProgress:
-            assertionFailure()
-            return nil
-        }
+        CLKComplicationTemplateExtraLargeSimpleText(textProvider: .day(date))
     }
 
     private func weekFraction(date: Date) -> Float {
