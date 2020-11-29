@@ -79,7 +79,12 @@ final class ComplicationDataBuilder {
     }
 
     func createTemplate(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTemplate? {
-        let identifier = ComplicationEmphasis(rawValue: complication.identifier)
+        guard let identifier: ComplicationEmphasis = complication.identifier == CLKDefaultComplicationIdentifier
+            ? .day
+            : ComplicationEmphasis(rawValue: complication.identifier)
+        else {
+            return nil
+        }
         switch complication.family {
         case .modularSmall:
             return createModularSmallTemplate(forDate: date, withIdentifier: identifier)
@@ -114,7 +119,7 @@ final class ComplicationDataBuilder {
         emphasis.rawValue
     }
 
-    private func createModularLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createModularLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         CLKComplicationTemplateModularLargeTallBody(
             headerTextProvider: .month(date, tintColor: emphasisColor),
             bodyTextProvider: .dayWeekday(date)
@@ -122,7 +127,7 @@ final class ComplicationDataBuilder {
     }
 
     /// hint: can play with colors
-    private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
             let template = CLKComplicationTemplateModularSmallStackText(
@@ -149,14 +154,11 @@ final class ComplicationDataBuilder {
             )
             template.tintColor = weekColor(fraction: fraction)
             return template
-        case .none:
-            assertionFailure()
-            return nil
         }
     }
 
     /// hint: has no colors
-    private func createUtilitarianSmallFlatTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createUtilitarianSmallFlatTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
             return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .month]))
@@ -170,13 +172,10 @@ final class ComplicationDataBuilder {
                 fillFraction: weekFraction(date: date),
                 ringStyle: .open
             )
-        case .none:
-            assertionFailure()
-            return nil
         }
     }
 
-    private func createUtilitarianLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createUtilitarianLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
             return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .month]))
@@ -184,14 +183,13 @@ final class ComplicationDataBuilder {
             return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday]))
         case .day:
             return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday, .month]))
-        case .none, .weekProgress:
-            assertionFailure()
+        case .weekProgress:
             return nil
         }
     }
 
     /// hint: uses watch face plain color. you can change progress ring tint color
-    private func createCircularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createCircularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
             return CLKComplicationTemplateCircularSmallStackText(
@@ -214,13 +212,10 @@ final class ComplicationDataBuilder {
             )
             template.tintColor = weekColor(fraction: fraction)
             return template
-        case .none:
-            assertionFailure()
-            return nil
         }
     }
 
-    private func createExtraLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis?) -> CLKComplicationTemplate? {
+    private func createExtraLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         CLKComplicationTemplateExtraLargeSimpleText(textProvider: .day(date))
     }
 
