@@ -33,24 +33,24 @@ final class ComplicationDataBuilder {
         let largeFamilies: [CLKComplicationFamily] = [.extraLarge, .modularLarge, .utilitarianLarge]
         return [
             CLKComplicationDescriptor(
-                identifier: createIdentifier(withEmphasis: .month),
-                displayName: "Month & Date",
-                supportedFamilies: smallFamilies + [.utilitarianLarge] + [.graphicCorner]
+                identifier: createIdentifier(withEmphasis: .day),
+                displayName: "Today's Date",
+                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
                 displayName: "Weekday & Date",
-                supportedFamilies: smallFamilies + [.utilitarianLarge] + [.graphicCorner]
+                supportedFamilies: smallFamilies + [.utilitarianLarge] + [.graphicCorner, .graphicCircular]
+            ),
+            CLKComplicationDescriptor(
+                identifier: createIdentifier(withEmphasis: .month),
+                displayName: "Month & Date",
+                supportedFamilies: smallFamilies + [.utilitarianLarge] + [.graphicCorner, .graphicCircular]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekProgress),
-                displayName: "Week & Date",
-                supportedFamilies: smallFamilies + [.graphicCorner]
-            ),
-            CLKComplicationDescriptor(
-                identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner]
+                supportedFamilies: smallFamilies + [.graphicCorner]
             ),
         ]
     }
@@ -101,8 +101,8 @@ final class ComplicationDataBuilder {
             return createExtraLargeTemplate(forDate: date, withIdentifier: identifier)
         case .graphicCorner:
             return createGraphicCornerTemplate(forDate: date, withIdentifier: identifier)
-//        case .graphicCircular:
-//            return createGraphicCircleTemplate(forDate: date)
+        case .graphicCircular:
+            return createGraphicCircleTemplate(forDate: date, withIdentifier: identifier)
 //        case .graphicRectangular:
 //            return createGraphicRectangularTemplate(forDate: date)
 //        case .graphicBezel:
@@ -245,6 +245,29 @@ final class ComplicationDataBuilder {
                 outerTextProvider: CLKDateTextProvider(date: date, units: [.day, .weekday])
             )
         }
+    }
+
+    private func createGraphicCircleTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
+        switch identifier {
+        case .month:
+            return CLKComplicationTemplateGraphicCircularStackText(
+                line1TextProvider: .month(date, tintColor: emphasisOrangeColor),
+                line2TextProvider: .day(date)
+            )
+        case .weekday:
+            return CLKComplicationTemplateGraphicCircularStackText(
+                line1TextProvider: .weekday(date, tintColor: emphasisOrangeColor),
+                line2TextProvider: .day(date)
+            )
+        case .day, .weekProgress:
+            let fraction = weekFraction(date: date)
+            let color = weekColor(fraction: fraction)
+            return CLKComplicationTemplateGraphicCircularClosedGaugeText(
+                gaugeProvider: CLKSimpleGaugeProvider(style: .ring, gaugeColor: color, fillFraction: fraction),
+                centerTextProvider: .day(date)
+            )
+        }
+
     }
 
     private func weekFraction(date: Date) -> Float {
