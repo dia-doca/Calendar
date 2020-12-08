@@ -6,6 +6,7 @@
 //
 
 import ClockKit
+import SwiftUI
 
 
 private enum ComplicationEmphasis: String {
@@ -35,7 +36,7 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular]
+                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular, .graphicRectangular]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
@@ -103,8 +104,8 @@ final class ComplicationDataBuilder {
             return createGraphicCornerTemplate(forDate: date, withIdentifier: identifier)
         case .graphicCircular:
             return createGraphicCircleTemplate(forDate: date, withIdentifier: identifier)
-//        case .graphicRectangular:
-//            return createGraphicRectangularTemplate(forDate: date)
+        case .graphicRectangular:
+            return createGraphicRectangularTemplate(forDate: date, withIdentifier: identifier)
 //        case .graphicBezel:
 //            return createGraphicBezelTemplate(forDate: date)
 //        case .graphicExtraLarge:
@@ -162,9 +163,9 @@ final class ComplicationDataBuilder {
     private func createUtilitarianSmallFlatTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
-            return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .month]))
+            return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: .dayMonth(date))
         case .weekday:
-            return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday]))
+            return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: .dayWeekday(date))
         case .day:
             return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: .day(date))
         case .weekProgress:
@@ -179,11 +180,11 @@ final class ComplicationDataBuilder {
     private func createUtilitarianLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
-            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .month]))
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: .dayMonth(date))
         case .weekday:
-            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday]))
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: .dayWeekday(date))
         case .day:
-            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: CLKDateTextProvider(date: date, units: [.day, .weekday, .month]))
+            return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: .full(date))
         case .weekProgress:
             return nil
         }
@@ -235,14 +236,14 @@ final class ComplicationDataBuilder {
         case .day:
             return CLKComplicationTemplateGraphicCornerStackText(
                 innerTextProvider: .month(date, tintColor: emphasisOrangeColor),
-                outerTextProvider: CLKDateTextProvider(date: date, units: [.day, .weekday])
+                outerTextProvider: .dayWeekday(date)
             )
         case .weekProgress:
             let fraction = weekFraction(date: date)
             let color = weekColor(fraction: fraction)
             return CLKComplicationTemplateGraphicCornerGaugeText(
                 gaugeProvider: CLKSimpleGaugeProvider(style: .fill, gaugeColor: color, fillFraction: fraction),
-                outerTextProvider: CLKDateTextProvider(date: date, units: [.day, .weekday])
+                outerTextProvider: .dayWeekday(date)
             )
         }
     }
@@ -268,6 +269,12 @@ final class ComplicationDataBuilder {
             )
         }
 
+    }
+
+    private func createGraphicRectangularTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
+        CLKComplicationTemplateGraphicRectangularFullView(
+            TodaysGraphicRectangularTemplate(date: date, primaryColor: Color(emphasisRedColor), secondaryColor: .secondary)
+        )
     }
 
     private func weekFraction(date: Date) -> Float {
@@ -299,16 +306,24 @@ private extension CLKTextProvider {
         createDateProvider(date: date, units: .day, tintColor: tintColor)
     }
 
-    static func dayWeekday(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
-        createDateProvider(date: date, units: [.day, .weekday], tintColor: tintColor)
-    }
-
     static func weekday(_ date: Date, tintColor: UIColor? = nil, uppercased: Bool? = nil) -> CLKDateTextProvider {
         createDateProvider(date: date, units: .weekday, tintColor: tintColor, uppercased: uppercased)
     }
 
     static func month(_ date: Date, tintColor: UIColor? = nil, uppercased: Bool? = nil) -> CLKDateTextProvider {
         createDateProvider(date: date, units: .month, tintColor: tintColor, uppercased: uppercased)
+    }
+
+    static func dayWeekday(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
+        createDateProvider(date: date, units: [.day, .weekday], tintColor: tintColor)
+    }
+
+    static func dayMonth(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
+        createDateProvider(date: date, units: [.day, .month], tintColor: tintColor)
+    }
+
+    static func full(_ date: Date, tintColor: UIColor? = nil) -> CLKDateTextProvider {
+        createDateProvider(date: date, units: [.day, .weekday, .month], tintColor: tintColor)
     }
 
     private static func createDateProvider(date: Date, units: NSCalendar.Unit, tintColor: UIColor? = nil, uppercased: Bool? = nil) -> CLKDateTextProvider {

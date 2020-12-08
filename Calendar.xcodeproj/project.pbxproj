@@ -54,6 +54,7 @@
 		21DC4EF9256D92270087AB27 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EF8256D92270087AB27 /* Font+Extension.swift */; };
 		21DC4EFA256D92270087AB27 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EF8256D92270087AB27 /* Font+Extension.swift */; };
 		21DC4EFB256D92270087AB27 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EF8256D92270087AB27 /* Font+Extension.swift */; };
+		21F7DF372579722200002CC5 /* TodaysGraphicRectangularTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7DF362579722200002CC5 /* TodaysGraphicRectangularTemplate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		21DC4EE5256D7B7A0087AB27 /* CalendarDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateView.swift; sourceTree = "<group>"; };
 		21DC4EEF256D7BE60087AB27 /* Scheme+Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scheme+Presets.swift"; sourceTree = "<group>"; };
 		21DC4EF8256D92270087AB27 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		21F7DF362579722200002CC5 /* TodaysGraphicRectangularTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysGraphicRectangularTemplate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			children = (
 				21AA3E5F256C35B000A2291D /* ComplicationController.swift */,
 				21BA512F25718D310040C220 /* ComplicationDataBuilder.swift */,
+				21F7DF362579722200002CC5 /* TodaysGraphicRectangularTemplate.swift */,
 			);
 			path = Complications;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				21BA513025718D310040C220 /* ComplicationDataBuilder.swift in Sources */,
 				21AA3E58256C35B000A2291D /* CalendarApp.swift in Sources */,
 				21AA3E5E256C35B000A2291D /* NotificationView.swift in Sources */,
+				21F7DF372579722200002CC5 /* TodaysGraphicRectangularTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
