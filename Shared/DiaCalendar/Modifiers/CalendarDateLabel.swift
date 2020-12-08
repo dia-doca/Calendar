@@ -28,7 +28,7 @@ struct CalendarDateLabel: ViewModifier {
                 content.foregroundColor(scheme.today.foregroundColor)
                     .background(
                         Circle()
-                            .inset(by: -2)
+                            .inset(by: -6)
                             .offset(y: 1)
                             .fill(scheme.today.backgroundColor)
                     )

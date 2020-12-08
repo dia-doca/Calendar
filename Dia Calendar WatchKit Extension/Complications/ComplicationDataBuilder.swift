@@ -36,7 +36,7 @@ final class ComplicationDataBuilder {
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular, .graphicRectangular]
+                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular, .graphicRectangular, .graphicBezel]
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
@@ -106,8 +106,8 @@ final class ComplicationDataBuilder {
             return createGraphicCircleTemplate(forDate: date, withIdentifier: identifier)
         case .graphicRectangular:
             return createGraphicRectangularTemplate(forDate: date, withIdentifier: identifier)
-//        case .graphicBezel:
-//            return createGraphicBezelTemplate(forDate: date)
+        case .graphicBezel:
+            return createGraphicBezelTemplate(forDate: date, withIdentifier: identifier)
 //        case .graphicExtraLarge:
 //            return createGraphicExtraLargeTemplate(forDate: date)
         @unknown default:
@@ -261,11 +261,8 @@ final class ComplicationDataBuilder {
                 line2TextProvider: .day(date)
             )
         case .day, .weekProgress:
-            let fraction = weekFraction(date: date)
-            let color = weekColor(fraction: fraction)
-            return CLKComplicationTemplateGraphicCircularClosedGaugeText(
-                gaugeProvider: CLKSimpleGaugeProvider(style: .ring, gaugeColor: color, fillFraction: fraction),
-                centerTextProvider: .day(date)
+            return CLKComplicationTemplateGraphicCircularView(
+                TodaysGraphicBezelCircularTemplate(date: date)
             )
         }
 
@@ -274,6 +271,15 @@ final class ComplicationDataBuilder {
     private func createGraphicRectangularTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         CLKComplicationTemplateGraphicRectangularFullView(
             TodaysGraphicRectangularTemplate(date: date, primaryColor: Color(emphasisRedColor), secondaryColor: .secondary)
+        )
+    }
+
+    private func createGraphicBezelTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
+        CLKComplicationTemplateGraphicBezelCircularText(
+            circularTemplate: CLKComplicationTemplateGraphicCircularView(
+                TodaysGraphicBezelCircularTemplate(date: date)
+            ),
+            textProvider: .month(date)
         )
     }
 
