@@ -32,11 +32,12 @@ final class ComplicationDataBuilder {
     func createComplicationDescriptors() -> [CLKComplicationDescriptor] {
         let smallFamilies: [CLKComplicationFamily] = [.circularSmall, .modularSmall, .utilitarianSmall]
         let largeFamilies: [CLKComplicationFamily] = [.extraLarge, .modularLarge, .utilitarianLarge]
+        let graphicFamilies: [CLKComplicationFamily] = [.graphicCorner, .graphicCircular, .graphicRectangular, .graphicBezel, .graphicExtraLarge]
         return [
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .day),
                 displayName: "Today's Date",
-                supportedFamilies: smallFamilies + largeFamilies + [.graphicCorner, .graphicCircular, .graphicRectangular, .graphicBezel]
+                supportedFamilies: smallFamilies + largeFamilies + graphicFamilies
             ),
             CLKComplicationDescriptor(
                 identifier: createIdentifier(withEmphasis: .weekday),
@@ -108,8 +109,8 @@ final class ComplicationDataBuilder {
             return createGraphicRectangularTemplate(forDate: date, withIdentifier: identifier)
         case .graphicBezel:
             return createGraphicBezelTemplate(forDate: date, withIdentifier: identifier)
-//        case .graphicExtraLarge:
-//            return createGraphicExtraLargeTemplate(forDate: date)
+        case .graphicExtraLarge:
+            return createGraphicExtraLargeTemplate(forDate: date, withIdentifier: identifier)
         @unknown default:
             return nil
         }
@@ -128,7 +129,6 @@ final class ComplicationDataBuilder {
         )
     }
 
-    /// hint: can play with colors
     private func createModularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
@@ -159,7 +159,6 @@ final class ComplicationDataBuilder {
         }
     }
 
-    /// hint: has no colors
     private func createUtilitarianSmallFlatTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
@@ -190,7 +189,6 @@ final class ComplicationDataBuilder {
         }
     }
 
-    /// hint: uses watch face plain color. you can change progress ring tint color
     private func createCircularSmallTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         switch identifier {
         case .month:
@@ -260,10 +258,15 @@ final class ComplicationDataBuilder {
                 line1TextProvider: .weekday(date, tintColor: emphasisOrangeColor),
                 line2TextProvider: .day(date)
             )
-        case .day, .weekProgress:
-            return CLKComplicationTemplateGraphicCircularView(
-                TodaysGraphicBezelCircularTemplate(date: date)
+        case .day:
+            let fraction = weekFraction(date: date)
+            let color = weekColor(fraction: fraction)
+            return CLKComplicationTemplateGraphicCircularClosedGaugeText(
+                gaugeProvider: CLKSimpleGaugeProvider(style: .ring, gaugeColor: color, fillFraction: fraction),
+                centerTextProvider: .day(date)
             )
+        case .weekProgress:
+            return nil
         }
 
     }
@@ -276,10 +279,18 @@ final class ComplicationDataBuilder {
 
     private func createGraphicBezelTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
         CLKComplicationTemplateGraphicBezelCircularText(
-            circularTemplate: CLKComplicationTemplateGraphicCircularView(
-                TodaysGraphicBezelCircularTemplate(date: date)
+            circularTemplate: CLKComplicationTemplateGraphicCircularStackText(
+                line1TextProvider: .weekday(date, tintColor: emphasisRedColor, uppercased: true),
+                line2TextProvider: .day(date)
             ),
             textProvider: .month(date)
+        )
+    }
+
+    private func createGraphicExtraLargeTemplate(forDate date: Date, withIdentifier identifier: ComplicationEmphasis) -> CLKComplicationTemplate? {
+        CLKComplicationTemplateGraphicExtraLargeCircularStackText(
+            line1TextProvider: .weekday(date),
+            line2TextProvider: .day(date)
         )
     }
 
