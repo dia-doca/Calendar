@@ -1,5 +1,5 @@
 //
-//  ScrollableCalendarView.swift
+//  InteractiveCalendarPagerView.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 11.12.2020.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct ScrollableCalendarView: View {
+struct InteractiveCalendarPagerView: View {
 
     let today: Date
     let calendar: Calendar
@@ -30,7 +30,7 @@ struct ScrollableCalendarView: View {
 
     private let pagesOffset: CGFloat = 16
 
-    var drag: some Gesture {
+    var paginationGesture: some Gesture {
         DragGesture(minimumDistance: .zero, coordinateSpace: .global)
             .onChanged { value in
                 dragGestureOffset = value.translation.height
@@ -63,13 +63,25 @@ struct ScrollableCalendarView: View {
             }
     }
 
+    var todaysGesture: some Gesture {
+        TapGesture(count: 2)
+            .onEnded {
+                upperMonth = 0
+                lowerMonth = 0
+            }
+    }
+
+    var combinedGesture: some Gesture {
+        paginationGesture.simultaneously(with: todaysGesture)
+    }
+
     var body: some View {
         GeometryReader { geometry in
             Group {
                 calendar(monthsOffset: upperMonth, positionOffset: upperOffset)
                 calendar(monthsOffset: lowerMonth, positionOffset: lowerOffset)
             }
-            .gesture(drag)
+            .gesture(combinedGesture)
             .onAppear(perform: {
                 geometryHeight = geometry.size.height
                 upperOffset = -(geometryHeight + pagesOffset)
@@ -109,7 +121,7 @@ struct ScrollableCalendarView_Preview: PreviewProvider {
     static var previews: some View {
 
         ForEach(PreviewDevices.watches, id: \.self) { device in
-            ScrollableCalendarView(today: Date(), calendar: .makeCalendar(), scheme: .standard)
+            InteractiveCalendarPagerView(today: Date(), calendar: .makeCalendar(), scheme: .standard)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)
         }
