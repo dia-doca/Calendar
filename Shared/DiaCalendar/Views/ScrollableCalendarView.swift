@@ -14,8 +14,6 @@ struct ScrollableCalendarView: View {
     let calendar: Calendar
     let scheme: CalendarScheme
 
-    @State private var monthOffset: Int = 0
-
     @State private var dragGestureOffset: CGFloat = 0
 
     @State private var upperOffset: CGFloat = 0
@@ -24,7 +22,7 @@ struct ScrollableCalendarView: View {
     @State private var upperMonth: Int = -1
     @State private var lowerMonth: Int = 0
 
-    @State private var geometryHeight: CGFloat = 0
+    @State private var geometryHeight: CGFloat = 340
 
     @State private var activeViewSwitcher: Bool = true
 
@@ -33,7 +31,7 @@ struct ScrollableCalendarView: View {
     private let pagesOffset: CGFloat = 16
 
     var drag: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: .zero, coordinateSpace: .global)
             .onChanged { value in
                 dragGestureOffset = value.translation.height
                 if dragGestureOffset > 0 {
@@ -68,10 +66,8 @@ struct ScrollableCalendarView: View {
     var body: some View {
         GeometryReader { geometry in
             Group {
-                calendar(monthsOffset: upperMonth)
-                    .offset(y: upperOffset + dragGestureOffset)
-                calendar(monthsOffset: lowerMonth)
-                    .offset(y: lowerOffset + dragGestureOffset)
+                calendar(monthsOffset: upperMonth, positionOffset: upperOffset)
+                calendar(monthsOffset: lowerMonth, positionOffset: lowerOffset)
             }
             .gesture(drag)
             .onAppear(perform: {
@@ -81,16 +77,32 @@ struct ScrollableCalendarView: View {
         }
     }
 
-    private func calendar(monthsOffset offset: Int) -> some View {
+    private func calendar(monthsOffset offset: Int, positionOffset: CGFloat) -> some View {
         CalendarView(
             today: today,
             month: calendar.date(byAdding: DateComponents(month: offset), to: today)!,
             calendar: calendar,
             scheme: scheme
         )
+        .scaleEffect( 1 - CGFloat( abs(positionOffset + dragGestureOffset) / (8 * geometryHeight)).bounded(in: 0...1) )
+        .offset(y: positionOffset + dragGestureOffset)
+        .opacity( 1 - Double( abs(positionOffset + dragGestureOffset) / geometryHeight).bounded(in: 0...1) )
     }
 
 }
+
+extension Comparable {
+    func bounded(in range: ClosedRange<Self>) -> Self {
+        if self < range.lowerBound {
+            return range.lowerBound
+        } else if self > range.upperBound {
+            return range.upperBound
+        } else {
+            return self
+        }
+    }
+}
+
 
 struct ScrollableCalendarView_Preview: PreviewProvider {
 
