@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21AA3E42256C35AF00A2291D"
-               BuildableName = "Dia Calendar.app"
+               BuildableName = "Calendar.app"
                BlueprintName = "Dia Calendar"
                ReferencedContainer = "container:Calendar.xcodeproj">
             </BuildableReference>
@@ -56,8 +56,10 @@
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "Dia Calendar WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Calendar">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
@@ -65,7 +67,7 @@
             BlueprintName = "Dia Calendar WatchKit App"
             ReferencedContainer = "container:Calendar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,8 +77,10 @@
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "Dia Calendar WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Calendar">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
@@ -84,7 +88,16 @@
             BlueprintName = "Dia Calendar WatchKit App"
             ReferencedContainer = "container:Calendar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
+            BuildableName = "Dia Calendar WatchKit App.app"
+            BlueprintName = "Dia Calendar WatchKit App"
+            ReferencedContainer = "container:Calendar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

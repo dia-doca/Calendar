@@ -731,6 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;
@@ -740,8 +741,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.calendar.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
 				PRODUCT_NAME = Calendar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -753,6 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;
@@ -762,8 +765,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.calendar.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
 				PRODUCT_NAME = Calendar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -788,7 +792,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.calendar.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
 				PRODUCT_NAME = Calendar;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -812,7 +816,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.calendar.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
 				PRODUCT_NAME = Calendar;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -826,8 +830,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
+				PRODUCT_NAME = "Dia Calendar";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
@@ -840,8 +844,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
+				PRODUCT_NAME = "Dia Calendar";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
@@ -858,7 +862,7 @@
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -878,7 +882,7 @@
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -903,7 +907,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -927,7 +931,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "su.bwi.calendar.Dia-Calendar.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
