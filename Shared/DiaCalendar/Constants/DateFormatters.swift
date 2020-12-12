@@ -13,6 +13,7 @@ extension DateFormatter {
     static let weekdayShort = DateFormatter(dateFormat: "EEE")
     static let month = DateFormatter(dateFormat: "MMMM")
     static let weekdayAndDay = DateFormatter(dateFormat: "EEEE d")
+    static let year = DateFormatter(dateFormat: "YYYY")
 }
 
 private extension DateFormatter {

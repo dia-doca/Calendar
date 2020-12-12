@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CalendarView(today: Date(), calendar: Calendar.current, scheme: .standard)
+        ScrollableCalendarView(
+            today: Date(),
+            calendar: Calendar.current,
+            scheme: .standard
+        )
     }
 }
 

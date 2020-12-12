@@ -11,6 +11,8 @@ import SwiftUI
 struct CalendarDateLabel: ViewModifier {
 
     let date: Date
+    let today: Date
+    let month: Date
     let calendar: Calendar
     let scheme: DateScheme
 
@@ -46,9 +48,9 @@ struct CalendarDateLabel: ViewModifier {
         switch date {
         case _ where calendar.isDateInToday(date):
             return .today
-        case _ where calendar.isDate(date, inSameMonthAs: Date()) && calendar.isDateInWeekend(date):
+        case _ where calendar.isDate(date, inSameMonthAs: month) && calendar.isDateInWeekend(date):
             return .weekend
-        case _ where calendar.isDate(date, inSameMonthAs: Date()):
+        case _ where calendar.isDate(date, inSameMonthAs: month):
             return .weekday
         default:
             return .outOfMonth

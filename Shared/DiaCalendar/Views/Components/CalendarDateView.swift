@@ -11,6 +11,8 @@ import SwiftUI
 struct CalendarDateView: View {
 
     let date: Date
+    let today: Date
+    let month: Date
     let calendar: Calendar
     let scheme: DateScheme
 
@@ -21,6 +23,8 @@ struct CalendarDateView: View {
             .modifier(
                 CalendarDateLabel(
                     date: date,
+                    today: today,
+                    month: month,
                     calendar: calendar,
                     scheme: scheme
                 )

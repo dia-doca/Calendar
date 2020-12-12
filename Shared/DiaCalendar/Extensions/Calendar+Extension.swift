@@ -10,6 +10,10 @@ import Foundation
 
 extension Calendar {
 
+    func isDate(_ date1: Date, inSameYearAs date2: Date) -> Bool {
+        dateComponents([.year], from: date1) == dateComponents([.year], from: date2)
+    }
+
     func isDate(_ date1: Date, inSameMonthAs date2: Date) -> Bool {
         dateComponents([.year, .month], from: date1) == dateComponents([.year, .month], from: date2)
     }

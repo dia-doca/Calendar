@@ -11,6 +11,7 @@ struct CalendarBodyView: View {
 
     let calendar: Calendar
     let today: Date
+    let month: Date
     let scheme: DateScheme
 
     var body: some View {
@@ -18,8 +19,14 @@ struct CalendarBodyView: View {
             ForEach(calendar.veryShortWeekdaySymbols.indices) { i in
                 VStack(spacing: 2) {
                     CalendarWeekView(weekday: adjustedWeekdayIndex(i) + 1, scheme: scheme, calendar: calendar)
-                    ForEach(calendar.daysOfPage(for: Date(), weekday: adjustedWeekdayIndex(i) + 1), id: \.self) { date in
-                        CalendarDateView(date: date, calendar: calendar, scheme: scheme)
+                    ForEach(calendar.daysOfPage(for: month, weekday: adjustedWeekdayIndex(i) + 1), id: \.self) { date in
+                        CalendarDateView(
+                            date: date,
+                            today: today,
+                            month: month,
+                            calendar: calendar,
+                            scheme: scheme
+                        )
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
