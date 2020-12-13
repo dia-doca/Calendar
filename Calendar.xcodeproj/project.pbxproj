@@ -30,6 +30,15 @@
 		2170CE5C2583E8BF00E4F1BB /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* PreviewDevices.swift */; };
 		2170CE5D2583E8BF00E4F1BB /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* PreviewDevices.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* PreviewDevices.swift */; };
+		21A290F7258688AE0098B441 /* MonthSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290F6258688AE0098B441 /* MonthSelectorView.swift */; };
+		21A290F8258688AE0098B441 /* MonthSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290F6258688AE0098B441 /* MonthSelectorView.swift */; };
+		21A290F9258688AE0098B441 /* MonthSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290F6258688AE0098B441 /* MonthSelectorView.swift */; };
+		21A2910025868A020098B441 /* AdjustedWatchFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* AdjustedWatchFonts.swift */; };
+		21A2910125868A020098B441 /* AdjustedWatchFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* AdjustedWatchFonts.swift */; };
+		21A2910225868A020098B441 /* AdjustedWatchFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* AdjustedWatchFonts.swift */; };
+		21A2910925868E070098B441 /* Blurred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2910825868E070098B441 /* Blurred.swift */; };
+		21A2910A25868E070098B441 /* Blurred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2910825868E070098B441 /* Blurred.swift */; };
+		21A2910B25868E070098B441 /* Blurred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2910825868E070098B441 /* Blurred.swift */; };
 		21AA3E47256C35AF00A2291D /* Dia Calendar WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 21AA3E46256C35AF00A2291D /* Dia Calendar WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		21AA3E4C256C35B000A2291D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21AA3E4B256C35B000A2291D /* Assets.xcassets */; };
 		21AA3E53256C35B000A2291D /* Dia Calendar WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21AA3E52256C35B000A2291D /* Dia Calendar WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -48,6 +57,9 @@
 		21C00C812584D79B00BBC614 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2144D2DB25801075008EBD42 /* Date+Extension.swift */; };
 		21C00C872584D79C00BBC614 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2144D2E8258010C5008EBD42 /* DateFormatters.swift */; };
 		21C00C882584D79C00BBC614 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2144D2DB25801075008EBD42 /* Date+Extension.swift */; };
+		21C09BC425865DAC00C80127 /* LightCalendarPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C09BC325865DAC00C80127 /* LightCalendarPagerView.swift */; };
+		21C09BC525865DAC00C80127 /* LightCalendarPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C09BC325865DAC00C80127 /* LightCalendarPagerView.swift */; };
+		21C09BC625865DAC00C80127 /* LightCalendarPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C09BC325865DAC00C80127 /* LightCalendarPagerView.swift */; };
 		21DC4EB6256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
 		21DC4EB7256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
 		21DC4EB8256D79E60087AB27 /* CalendarDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */; };
@@ -132,6 +144,9 @@
 		2144D2E8258010C5008EBD42 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		2170CE4D2583E7CF00E4F1BB /* InteractiveCalendarPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveCalendarPagerView.swift; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* PreviewDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
+		21A290F6258688AE0098B441 /* MonthSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSelectorView.swift; sourceTree = "<group>"; };
+		21A290FF25868A020098B441 /* AdjustedWatchFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedWatchFonts.swift; sourceTree = "<group>"; };
+		21A2910825868E070098B441 /* Blurred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurred.swift; sourceTree = "<group>"; };
 		21AA3E43256C35AF00A2291D /* Dia Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dia Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AA3E46256C35AF00A2291D /* Dia Calendar WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dia Calendar WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AA3E4B256C35B000A2291D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +162,7 @@
 		21AA3E66256C35B000A2291D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21AA3E67256C35B000A2291D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		21BA512F25718D310040C220 /* ComplicationDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationDataBuilder.swift; sourceTree = "<group>"; };
+		21C09BC325865DAC00C80127 /* LightCalendarPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCalendarPagerView.swift; sourceTree = "<group>"; };
 		21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateLabel.swift; sourceTree = "<group>"; };
 		21DC4ECA256D7B2F0087AB27 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		21DC4ED3256D7B470087AB27 /* CalendarBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBodyView.swift; sourceTree = "<group>"; };
@@ -317,6 +333,7 @@
 				21DC4ED3256D7B470087AB27 /* CalendarBodyView.swift */,
 				21DC4EDC256D7B640087AB27 /* CalendarWeekView.swift */,
 				21DC4EE5256D7B7A0087AB27 /* CalendarDateView.swift */,
+				21A290F6258688AE0098B441 /* MonthSelectorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -325,6 +342,8 @@
 			isa = PBXGroup;
 			children = (
 				21DC4EB5256D79E60087AB27 /* CalendarDateLabel.swift */,
+				21A290FF25868A020098B441 /* AdjustedWatchFonts.swift */,
+				21A2910825868E070098B441 /* Blurred.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -336,6 +355,7 @@
 				212253AA256914B900FC22DB /* CalendarView.swift */,
 				2170CE4D2583E7CF00E4F1BB /* InteractiveCalendarPagerView.swift */,
 				211ABFF82585207600AC1A2D /* AnimatedCalendarPagerView.swift */,
+				21C09BC325865DAC00C80127 /* LightCalendarPagerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -533,11 +553,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A290F7258688AE0098B441 /* MonthSelectorView.swift in Sources */,
 				211ABFF92585207600AC1A2D /* AnimatedCalendarPagerView.swift in Sources */,
 				2170CE5C2583E8BF00E4F1BB /* PreviewDevices.swift in Sources */,
 				21DC4EB6256D79E60087AB27 /* CalendarDateLabel.swift in Sources */,
 				2122539C2569145800FC22DB /* ContentView.swift in Sources */,
 				21DC4EF9256D92270087AB27 /* Font+Extension.swift in Sources */,
+				21C09BC425865DAC00C80127 /* LightCalendarPagerView.swift in Sources */,
 				21DC4EE6256D7B7A0087AB27 /* CalendarDateView.swift in Sources */,
 				21C00C812584D79B00BBC614 /* Date+Extension.swift in Sources */,
 				2170CE4E2583E7CF00E4F1BB /* InteractiveCalendarPagerView.swift in Sources */,
@@ -547,8 +569,10 @@
 				212253B2256A7D0600FC22DB /* Calendar+Extension.swift in Sources */,
 				21DC4ED4256D7B470087AB27 /* CalendarBodyView.swift in Sources */,
 				2122539A2569145800FC22DB /* CalendarApp.swift in Sources */,
+				21A2910025868A020098B441 /* AdjustedWatchFonts.swift in Sources */,
 				21DC4EDD256D7B640087AB27 /* CalendarWeekView.swift in Sources */,
 				212253AB256914B900FC22DB /* CalendarView.swift in Sources */,
+				21A2910925868E070098B441 /* Blurred.swift in Sources */,
 				212253B7256AE2FB00FC22DB /* Scheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,11 +581,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A290F8258688AE0098B441 /* MonthSelectorView.swift in Sources */,
 				211ABFFA2585207600AC1A2D /* AnimatedCalendarPagerView.swift in Sources */,
 				2170CE5D2583E8BF00E4F1BB /* PreviewDevices.swift in Sources */,
 				21DC4EB7256D79E60087AB27 /* CalendarDateLabel.swift in Sources */,
 				2122539D2569145800FC22DB /* ContentView.swift in Sources */,
 				21DC4EFA256D92270087AB27 /* Font+Extension.swift in Sources */,
+				21C09BC525865DAC00C80127 /* LightCalendarPagerView.swift in Sources */,
 				21DC4EE7256D7B7A0087AB27 /* CalendarDateView.swift in Sources */,
 				21C00C882584D79C00BBC614 /* Date+Extension.swift in Sources */,
 				2170CE4F2583E7CF00E4F1BB /* InteractiveCalendarPagerView.swift in Sources */,
@@ -571,8 +597,10 @@
 				212253B3256A7D0600FC22DB /* Calendar+Extension.swift in Sources */,
 				21DC4ED5256D7B470087AB27 /* CalendarBodyView.swift in Sources */,
 				2122539B2569145800FC22DB /* CalendarApp.swift in Sources */,
+				21A2910125868A020098B441 /* AdjustedWatchFonts.swift in Sources */,
 				21DC4EDE256D7B640087AB27 /* CalendarWeekView.swift in Sources */,
 				212253AC256914B900FC22DB /* CalendarView.swift in Sources */,
+				21A2910A25868E070098B441 /* Blurred.swift in Sources */,
 				212253B8256AE2FB00FC22DB /* Scheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,9 +617,13 @@
 				21AA3E5A256C35B000A2291D /* ContentView.swift in Sources */,
 				21DC4EF2256D7BE60087AB27 /* Scheme+Presets.swift in Sources */,
 				21DC4ECD256D7B2F0087AB27 /* CalendarHeaderView.swift in Sources */,
+				21A2910B25868E070098B441 /* Blurred.swift in Sources */,
+				21A2910225868A020098B441 /* AdjustedWatchFonts.swift in Sources */,
 				21AA3E78256C36B300A2291D /* CalendarView.swift in Sources */,
 				21AA3E60256C35B000A2291D /* ComplicationController.swift in Sources */,
 				21DC4EDF256D7B640087AB27 /* CalendarWeekView.swift in Sources */,
+				21A290F9258688AE0098B441 /* MonthSelectorView.swift in Sources */,
+				21C09BC625865DAC00C80127 /* LightCalendarPagerView.swift in Sources */,
 				21DC4EE8256D7B7A0087AB27 /* CalendarDateView.swift in Sources */,
 				21AA3E7E256C36BE00A2291D /* Scheme.swift in Sources */,
 				21AA3E84256C36C100A2291D /* Calendar+Extension.swift in Sources */,
@@ -835,7 +867,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
@@ -849,7 +881,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
@@ -867,7 +899,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
@@ -888,7 +920,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
@@ -908,7 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Dia Calendar WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;
@@ -933,7 +965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Dia Calendar WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;

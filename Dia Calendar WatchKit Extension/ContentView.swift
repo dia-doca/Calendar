@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        InteractiveCalendarPagerView(
-            today: Date(),
-            calendar: Calendar.current,
-            scheme: .standard
+        LightCalendarPagerView(
+            scheme: .standard,
+            viewModel: LightCalendarPagerViewModel(calendar: .makeCalendar(), today: Date())
         )
+        .modifier(AdjustedWatchFonts())
     }
 }
 
