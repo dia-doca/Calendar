@@ -46,7 +46,7 @@ struct CalendarDateLabel: ViewModifier {
 
     private func getDayType(from date: Date, calendar: Calendar) -> DayType {
         switch date {
-        case _ where calendar.isDateInToday(date):
+        case _ where calendar.isDate(date, inSameMonthAs: month) && calendar.isDateInToday(date):
             return .today
         case _ where calendar.isDate(date, inSameMonthAs: month) && calendar.isDateInWeekend(date):
             return .weekend

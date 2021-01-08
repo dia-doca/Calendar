@@ -30,7 +30,7 @@ struct CalendarView_Previews: PreviewProvider {
         let calendar = Calendar.current
         let today = Date()
         let month = calendar.date(byAdding: DateComponents(month: -18), to: today)!
-        ForEach(PreviewDevices.watches, id: \.self) { device in
+        ForEach(Devices.watches, id: \.self) { device in
             GeometryReader { geometry in
                 CalendarView(
                     today: today,

@@ -1,5 +1,5 @@
 //
-//  Blurred.swift
+//  DistancingEffect.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 13.12.2020.
@@ -8,14 +8,14 @@
 import SwiftUI
 
 
-struct Blurred: ViewModifier {
+struct DistancingEffect: ViewModifier {
 
-    let isBlurred: Bool
+    let isEnabled: Bool
 
     func body(content: Content) -> some View {
         content
-            .blur(radius: isBlurred ? 8.5 : 0)
-            .scaleEffect(isBlurred ? 0.95 : 1)
+            .opacity(isEnabled ? 0.8 : 1)
+            .scaleEffect(isEnabled ? 0.95 : 1)
             .animation(.default)
     }
 

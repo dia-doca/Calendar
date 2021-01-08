@@ -82,7 +82,7 @@ struct AnimatedCalendarPagerView_Preview: PreviewProvider {
 
     static var previews: some View {
 
-        ForEach(PreviewDevices.watches, id: \.self) { device in
+        ForEach(Devices.watches, id: \.self) { device in
             AnimatedCalendarPagerView(today: Date(), calendar: .makeCalendar(), scheme: .standard)
                 .previewDevice(PreviewDevice(rawValue: device))
                 .previewDisplayName(device)
