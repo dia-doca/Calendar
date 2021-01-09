@@ -21,6 +21,7 @@
 		2168A32F25A9E2B3007B5783 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168A32C25A9E2B3007B5783 /* Date+Extension.swift */; };
 		2168A33825A9E860007B5783 /* MonthSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168A33525A9E860007B5783 /* MonthSelectorView.swift */; };
 		2168A35925A9F5B0007B5783 /* DiaCalendarPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 2168A35825A9F5B0007B5783 /* DiaCalendarPackage */; };
+		2168A36025A9F6EB007B5783 /* DiaCalendarPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 2168A35F25A9F6EB007B5783 /* DiaCalendarPackage */; };
 		2170CE5C2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		2170CE5D2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
@@ -126,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2168A36025A9F6EB007B5783 /* DiaCalendarPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +300,9 @@
 			dependencies = (
 			);
 			name = "Calendar (iOS)";
+			packageProductDependencies = (
+				2168A35F25A9F6EB007B5783 /* DiaCalendarPackage */,
+			);
 			productName = "Calendar (iOS)";
 			productReference = 2122538E2569145800FC22DB /* Calendar.app */;
 			productType = "com.apple.product-type.application";
@@ -922,6 +927,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		2168A35825A9F5B0007B5783 /* DiaCalendarPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DiaCalendarPackage;
+		};
+		2168A35F25A9F6EB007B5783 /* DiaCalendarPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiaCalendarPackage;
 		};

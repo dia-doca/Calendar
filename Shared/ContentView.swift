@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import DiaCalendarPackage
 
 
 struct ContentView: View {
 
     var body: some View {
-        CalendarView(today: Date(), calendar: Calendar.current, scheme: .standard)
+        CalendarView(
+            today: Date(),
+            month: Date(),
+            calendar: Calendar.current,
+            scheme: .standard
+        )
     }
 
 }
