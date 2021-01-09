@@ -16,11 +16,9 @@ struct ContentView: View {
 
     var body: some View {
         CalendarNavigationView(
-            scheme: .standard,
-            viewModel: CalendarNavigationViewModel(
-                calendar: calendar,
-                today: today
-            )
+            today: today,
+            calendar: calendar,
+            scheme: .standard
         )
         .onReceive(NotificationCenter.default.publisher(for: WKExtension.applicationWillEnterForegroundNotification)) { _ in
             if !calendar.isDateInToday(today) {

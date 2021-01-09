@@ -10,15 +10,20 @@ import Combine
 
 struct CalendarNavigationView: View {
 
-    let scheme: CalendarScheme
+    @ObservedObject private var viewModel: CalendarNavigationViewModel
 
-    @ObservedObject var viewModel: CalendarNavigationViewModel
+    private let scheme: CalendarScheme
 
-    var todaysTap: some Gesture {
+    private var todaysTap: some Gesture {
         TapGesture(count: 2)
             .onEnded {
                 viewModel.reset()
             }
+    }
+
+    init(today: Date, calendar: Calendar, scheme: CalendarScheme) {
+        self.scheme = scheme
+        viewModel = CalendarNavigationViewModel(calendar: calendar, today: today)
     }
 
     var body: some View {
@@ -59,8 +64,9 @@ struct LightCalendarPagerView_Preview: PreviewProvider {
 
         ForEach(SimulatorDevices.watches, id: \.self) { device in
             CalendarNavigationView(
-                scheme: .standard,
-                viewModel: CalendarNavigationViewModel(calendar: .makeCalendar(), today: Date())
+                today: Date(),
+                calendar: .makeCalendar(),
+                scheme: .standard
             )
             .previewDevice(PreviewDevice(rawValue: device))
             .previewDisplayName(device)
