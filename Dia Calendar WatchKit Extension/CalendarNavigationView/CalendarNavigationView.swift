@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import DiaCalendarPackage
 
 struct CalendarNavigationView: View {
 
@@ -21,7 +22,7 @@ struct CalendarNavigationView: View {
             }
     }
 
-    init(today: Date, calendar: Calendar, scheme: CalendarScheme) {
+    public init(today: Date, calendar: Calendar, scheme: CalendarScheme) {
         self.scheme = scheme
         viewModel = CalendarNavigationViewModel(calendar: calendar, today: today)
     }
@@ -65,7 +66,7 @@ struct LightCalendarPagerView_Preview: PreviewProvider {
         ForEach(SimulatorDevices.watches, id: \.self) { device in
             CalendarNavigationView(
                 today: Date(),
-                calendar: .makeCalendar(),
+                calendar: Calendar.current,
                 scheme: .standard
             )
             .previewDevice(PreviewDevice(rawValue: device))

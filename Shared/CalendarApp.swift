@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiaCalendarPackage1ee
 
 @main
 struct CalendarApp: App {

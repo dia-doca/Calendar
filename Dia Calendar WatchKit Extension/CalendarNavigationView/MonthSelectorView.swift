@@ -10,7 +10,11 @@ import SwiftUI
 
 struct MonthSelectorView: View {
 
-    let month: Date
+    private let month: Date
+
+    init(month: Date) {
+        self.month = month
+    }
 
     var body: some View {
         VStack {
