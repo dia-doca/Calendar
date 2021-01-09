@@ -76,10 +76,12 @@ extension Calendar {
 }
 
 extension Calendar {
+
     static func makeCalendar() -> Calendar {
         var calendar = Calendar.current
         calendar.firstWeekday = 2
         return calendar
     }
+
 }
 

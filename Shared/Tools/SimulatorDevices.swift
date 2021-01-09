@@ -1,5 +1,5 @@
 //
-//  Devices.swift
+//  SimulatorDevices.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 11.12.2020.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum Devices {
+enum SimulatorDevices {
     static let watches = [
         "Apple Watch Series 3 - 38mm",
         "Apple Watch Series 3 - 42mm",

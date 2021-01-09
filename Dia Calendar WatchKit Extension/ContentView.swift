@@ -7,20 +7,21 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
 
     @State var today = Date()
+
     private let calendar = Calendar.current
 
     var body: some View {
-        LightCalendarPagerView(
+        CalendarNavigationView(
             scheme: .standard,
-            viewModel: LightCalendarPagerViewModel(
+            viewModel: CalendarNavigationViewModel(
                 calendar: calendar,
                 today: today
             )
         )
-        .modifier(IWatchFontsAdjuster())
         .onReceive(NotificationCenter.default.publisher(for: WKExtension.applicationWillEnterForegroundNotification)) { _ in
             if !calendar.isDateInToday(today) {
                 today = Date()
@@ -31,7 +32,9 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
         ContentView()
     }
+    
 }

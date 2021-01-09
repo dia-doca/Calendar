@@ -1,5 +1,5 @@
 //
-//  DistancingEffect.swift
+//  ShadingEffect.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 13.12.2020.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct DistancingEffect: ViewModifier {
+struct ShadingEffect: ViewModifier {
 
     let isEnabled: Bool
 

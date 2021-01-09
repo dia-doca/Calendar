@@ -1,5 +1,5 @@
 //
-//  LightCalendarPagerView.swift
+//  CalendarNavigationView.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 13.12.2020.
@@ -8,11 +8,11 @@
 import SwiftUI
 import Combine
 
-struct LightCalendarPagerView: View {
+struct CalendarNavigationView: View {
 
     let scheme: CalendarScheme
 
-    @ObservedObject var viewModel: LightCalendarPagerViewModel
+    @ObservedObject var viewModel: CalendarNavigationViewModel
 
     var todaysTap: some Gesture {
         TapGesture(count: 2)
@@ -24,7 +24,7 @@ struct LightCalendarPagerView: View {
     var body: some View {
         ZStack {
             calendarView(month: viewModel.currentMonth)
-                .modifier(DistancingEffect(isEnabled: viewModel.isSelectorVisible))
+                .modifier(ShadingEffect(isEnabled: viewModel.isSelectorVisible))
             if viewModel.isSelectorVisible {
                 MonthSelectorView(month: viewModel.pickerMonth)
                     .scaleEffect(viewModel.monthSelectorViewScaleFactor)
@@ -36,6 +36,7 @@ struct LightCalendarPagerView: View {
                 #endif
             }
          }
+        .modifier(IWatchFontsAdjuster())
         .modifier(IWatchDigitalCrownConnector(digitalCrownRotation: $viewModel.digitalCrownRotation))
         .gesture(todaysTap)
 
@@ -56,12 +57,11 @@ struct LightCalendarPagerView_Preview: PreviewProvider {
 
     static var previews: some View {
 
-        ForEach(Devices.watches, id: \.self) { device in
-            LightCalendarPagerView(
+        ForEach(SimulatorDevices.watches, id: \.self) { device in
+            CalendarNavigationView(
                 scheme: .standard,
-                viewModel: LightCalendarPagerViewModel(calendar: .makeCalendar(), today: Date())
+                viewModel: CalendarNavigationViewModel(calendar: .makeCalendar(), today: Date())
             )
-            .modifier(IWatchFontsAdjuster())
             .previewDevice(PreviewDevice(rawValue: device))
             .previewDisplayName(device)
         }

@@ -1,14 +1,30 @@
 //
-//  Font+Extension.swift
+//  IWatchFontsAdjuster.swift
 //  Calendar
 //
-//  Created by Ivan Druzhinin on 24.11.2020.
+//  Created by Ivan Druzhinin on 13.12.2020.
 //
 
 import SwiftUI
 
 
-extension Font {
+struct IWatchFontsAdjuster: ViewModifier {
+
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        return GeometryReader { geometry in
+            content
+                .font(.adjustedIWatchFont(screenHeight: geometry.size.height))
+        }
+        #else
+        return content
+        #endif
+    }
+
+}
+
+private extension Font {
+
     static func adjustedIWatchFont(screenHeight height: CGFloat) -> Font {
         if height == 174 {  // 3 - 42
             return .system(size: 15, design: .default)
@@ -27,4 +43,5 @@ extension Font {
 
         }
     }
+
 }

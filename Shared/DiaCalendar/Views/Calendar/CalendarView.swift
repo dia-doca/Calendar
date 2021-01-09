@@ -30,7 +30,7 @@ struct CalendarView_Previews: PreviewProvider {
         let calendar = Calendar.current
         let today = Date()
         let month = calendar.date(byAdding: DateComponents(month: -18), to: today)!
-        ForEach(Devices.watches, id: \.self) { device in
+        ForEach(SimulatorDevices.watches, id: \.self) { device in
             GeometryReader { geometry in
                 CalendarView(
                     today: today,
@@ -38,12 +38,11 @@ struct CalendarView_Previews: PreviewProvider {
                     calendar: calendar,
                     scheme: .standard
                 )
-                .font(.adjustedIWatchFont(screenHeight: geometry.size.height))
             }
             .preferredColorScheme(.light)
             .previewDevice(PreviewDevice(rawValue: device))
             .previewDisplayName(device)
-
         }
     }
+    
 }

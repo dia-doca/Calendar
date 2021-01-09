@@ -13,7 +13,6 @@ struct IWatchDigitalCrownConnector: ViewModifier {
     let digitalCrownRotation: Binding<Double>
 
     func body(content: Content) -> some View {
-
         #if os(watchOS)
         return content
             .focusable(true)
@@ -29,7 +28,6 @@ struct IWatchDigitalCrownConnector: ViewModifier {
         #else
         return content
         #endif
-
     }
 
 }

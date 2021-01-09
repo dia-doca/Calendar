@@ -1,5 +1,5 @@
 //
-//  LightCalendarPagerViewModel.swift
+//  CalendarNavigationViewModel.swift
 //  Calendar
 //
 //  Created by Ivan Druzhinin on 16.12.2020.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class LightCalendarPagerViewModel: ObservableObject {
+class CalendarNavigationViewModel: ObservableObject {
 
     @Published var isSelectorVisible = false
     @Published var monthSelectorViewScaleFactor: CGFloat = 0.0
