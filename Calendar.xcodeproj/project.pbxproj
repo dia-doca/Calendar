@@ -25,6 +25,7 @@
 		2170CE5C2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		2170CE5D2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
+		218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C106A25AB74BE00C5660C /* ContentViewModel.swift */; };
 		21A2910225868A020098B441 /* IWatchFontsAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */; };
 		21A2910B25868E070098B441 /* ShadingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2910825868E070098B441 /* ShadingEffect.swift */; };
 		21AA3E47256C35AF00A2291D /* Dia Calendar WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 21AA3E46256C35AF00A2291D /* Dia Calendar WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 		2168A33525A9E860007B5783 /* MonthSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelectorView.swift; sourceTree = "<group>"; };
 		2168A35225A9F5A3007B5783 /* DiaCalendarPackage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DiaCalendarPackage; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevices.swift; sourceTree = "<group>"; };
+		218C106A25AB74BE00C5660C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWatchFontsAdjuster.swift; sourceTree = "<group>"; };
 		21A2910825868E070098B441 /* ShadingEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadingEffect.swift; sourceTree = "<group>"; };
 		21AA3E43256C35AF00A2291D /* Dia Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dia Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				21BA513D25718D8D0040C220 /* Complications */,
 				21AA3E57256C35B000A2291D /* CalendarApp.swift */,
 				21AA3E59256C35B000A2291D /* ContentView.swift */,
+				218C106A25AB74BE00C5660C /* ContentViewModel.swift */,
 				21AA3E61256C35B000A2291D /* Assets.xcassets */,
 				21AA3E66256C35B000A2291D /* Info.plist */,
 				21AA3E63256C35B000A2291D /* Preview Content */,
@@ -501,6 +504,7 @@
 				21E9982825A9A4AA006A75D9 /* Comparable+Bounded.swift in Sources */,
 				2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */,
 				21AA3E5A256C35B000A2291D /* ContentView.swift in Sources */,
+				218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */,
 				21C0CD82258AA39200B68F66 /* CalendarNavigationViewModel.swift in Sources */,
 				2168A33825A9E860007B5783 /* MonthSelectorView.swift in Sources */,
 				21A2910B25868E070098B441 /* ShadingEffect.swift in Sources */,

@@ -10,20 +10,16 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var today = Date()
-
-    private let calendar = Calendar.current
+    @ObservedObject private var viewModel = ViewModel()
 
     var body: some View {
         CalendarNavigationView(
-            today: today,
-            calendar: calendar,
-            scheme: .standard
+            today: viewModel.today,
+            calendar: viewModel.calendar,
+            scheme: viewModel.scheme
         )
-        .onReceive(NotificationCenter.default.publisher(for: WKExtension.applicationWillEnterForegroundNotification)) { _ in
-            if !calendar.isDateInToday(today) {
-                today = Date()
-            }
+        .onAppear {
+            self.viewModel.sendEvent(.onAppear)
         }
     }
 
