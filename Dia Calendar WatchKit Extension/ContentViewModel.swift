@@ -14,11 +14,8 @@ extension ContentView {
 
     final class ViewModel: ObservableObject {
 
-        enum Event {
-            case onAppear
-        }
-
         @Published private(set) var today = Date()
+        
         let calendar = Calendar.current
         let scheme: CalendarScheme = .standard
 
@@ -27,46 +24,41 @@ extension ContentView {
 
         init() {
             configureApplicationObserver()
-        }
-
-        func sendEvent(_ event: Event) {
-            switch event {
-            case .onAppear:
-                onAppear()
-            }
+            activateMidnightTimer()
         }
 
         // MARK: Private
 
         @objc
-        private func updateCurrentDate() {
-            today = calendar.date(byAdding: DateComponents(day: 1), to: today)!
+        private func updateTodaysDate() {
+            today = Date()
         }
 
         private func configureApplicationObserver() {
             NotificationCenter.default.publisher(for: WKExtension.applicationWillEnterForegroundNotification)
                 .sink { [weak self] notification in
                     guard let strongSelf = self else { return }
-                    if !strongSelf.calendar.isDateInToday(strongSelf.today) {
-                        strongSelf.today = Date()
+                    if strongSelf.calendar.isDateInToday(strongSelf.today) == false {
+                        strongSelf.updateTodaysDate()
                     }
+                    strongSelf.activateMidnightTimer()
                 }
                 .store(in: &bag)
         }
 
-        private func onAppear() {
+        private func activateMidnightTimer() {
             timer?.invalidate()
-            let startOfToday = calendar.startOfDay(for: Date())
-            let startOfTomorrow = calendar.date(byAdding: DateComponents(day: 1), to: startOfToday)!
-            let secondsInDay: TimeInterval = 24 * 60 * 60
+            let tomorrow = calendar.date(byAdding: DateComponents(day: 1), to: Date())!
+            let startOfTomorrow = calendar.startOfDay(for: tomorrow)
             let timer = Timer(
                 fireAt: startOfTomorrow,
-                interval: secondsInDay,
+                interval: 0,
                 target: self,
-                selector: #selector(updateCurrentDate),
+                selector: #selector(updateTodaysDate),
                 userInfo: nil,
-                repeats: true
+                repeats: false
             )
+            self.timer = timer
             RunLoop.main.add(timer, forMode: .common)
         }
 

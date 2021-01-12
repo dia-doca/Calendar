@@ -18,9 +18,6 @@ struct ContentView: View {
             calendar: viewModel.calendar,
             scheme: viewModel.scheme
         )
-        .onAppear {
-            self.viewModel.sendEvent(.onAppear)
-        }
     }
 
 }
