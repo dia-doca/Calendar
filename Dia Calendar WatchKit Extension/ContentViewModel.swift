@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import DiaCalendarPackage
+import DiaCalendar
 
 
 extension ContentView {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,8 @@
 		2170CE5D2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C106A25AB74BE00C5660C /* ContentViewModel.swift */; };
+		219BDF4525AE31BF00399F70 /* DiaCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 219BDF4425AE31BF00399F70 /* DiaCalendar */; };
+		219BDF4C25AE322400399F70 /* DiaCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 219BDF4B25AE322400399F70 /* DiaCalendar */; };
 		21A2910225868A020098B441 /* IWatchFontsAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */; };
 		21A2910B25868E070098B441 /* ShadingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2910825868E070098B441 /* ShadingEffect.swift */; };
 		21AA3E47256C35AF00A2291D /* Dia Calendar WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 21AA3E46256C35AF00A2291D /* Dia Calendar WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -99,6 +101,7 @@
 		2168A33525A9E860007B5783 /* MonthSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelectorView.swift; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevices.swift; sourceTree = "<group>"; };
 		218C106A25AB74BE00C5660C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		219BDF3E25AE31A000399F70 /* DiaCalendar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DiaCalendar; path = ../Frameworks/DiaCalendar; sourceTree = "<group>"; };
 		21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWatchFontsAdjuster.swift; sourceTree = "<group>"; };
 		21A2910825868E070098B441 /* ShadingEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadingEffect.swift; sourceTree = "<group>"; };
 		21AA3E43256C35AF00A2291D /* Dia Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dia Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219BDF4C25AE322400399F70 /* DiaCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219BDF4525AE31BF00399F70 /* DiaCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +154,7 @@
 		212253812569145700FC22DB = {
 			isa = PBXGroup;
 			children = (
+				219BDF3E25AE31A000399F70 /* DiaCalendar */,
 				212253862569145700FC22DB /* Shared */,
 				212253902569145800FC22DB /* iOS */,
 				212253972569145800FC22DB /* macOS */,
@@ -298,6 +304,7 @@
 			);
 			name = "Calendar (iOS)";
 			packageProductDependencies = (
+				219BDF4B25AE322400399F70 /* DiaCalendar */,
 			);
 			productName = "Calendar (iOS)";
 			productReference = 2122538E2569145800FC22DB /* Calendar.app */;
@@ -368,6 +375,7 @@
 			);
 			name = "Dia Calendar WatchKit Extension";
 			packageProductDependencies = (
+				219BDF4425AE31BF00399F70 /* DiaCalendar */,
 			);
 			productName = "Dia Calendar WatchKit Extension";
 			productReference = 21AA3E52256C35B000A2291D /* Dia Calendar WatchKit Extension.appex */;
@@ -743,7 +751,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
@@ -757,7 +765,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = su.bwi.app.calendar;
@@ -775,7 +783,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
@@ -796,7 +804,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				IBSC_MODULE = Dia_Calendar_WatchKit_Extension;
 				INFOPLIST_FILE = "Dia Calendar WatchKit App/Info.plist";
@@ -816,7 +824,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Dia Calendar WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;
@@ -841,7 +849,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Dia Calendar WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = AA2SB2RADU;
 				ENABLE_PREVIEWS = YES;
@@ -920,6 +928,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		219BDF4425AE31BF00399F70 /* DiaCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DiaCalendar;
+		};
+		219BDF4B25AE322400399F70 /* DiaCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DiaCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 212253822569145700FC22DB /* Project object */;
 }
