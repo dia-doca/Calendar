@@ -23,11 +23,10 @@ public struct CalendarView: View {
     }
 
     public var body: some View {
-        Text("Hello World!!!")
-//        VStack(alignment: .leading, spacing: 2) {
-//            CalendarHeaderView(today: today, month: month, calendar: calendar, scheme: scheme.header)
-//            CalendarBodyView(today: today, month: month, calendar: calendar, scheme: scheme.date)
-//        }
+        VStack(alignment: .leading, spacing: 2) {
+            CalendarHeaderView(today: today, month: month, calendar: calendar, scheme: scheme.header)
+            CalendarBodyView(today: today, month: month, calendar: calendar, scheme: scheme.date)
+        }
     }
 
 }

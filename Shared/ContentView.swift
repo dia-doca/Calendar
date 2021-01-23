@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DiaCalendar
 
 
 struct ContentView: View {
