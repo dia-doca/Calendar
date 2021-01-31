@@ -15,7 +15,7 @@ extension DateFormatter {
     static let month = DateFormatter(dateFormat: "MMMM")
     static let weekdayAndDay = DateFormatter(dateFormat: "EEEE d")
     static let year = DateFormatter(dateFormat: "YYYY")
-    
+
 }
 
 private extension DateFormatter {

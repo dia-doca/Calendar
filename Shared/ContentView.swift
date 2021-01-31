@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DiaCalendar
 
 
 struct ContentView: View {
@@ -18,6 +17,7 @@ struct ContentView: View {
             calendar: Calendar.current,
             scheme: .standard
         )
+        .aspectRatio(1, contentMode: .fit)
     }
 
 }
