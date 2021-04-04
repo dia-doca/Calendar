@@ -15,13 +15,6 @@ struct CalendarNavigationView: View {
 
     private let scheme: CalendarScheme
 
-    private var todaysTap: some Gesture {
-        TapGesture(count: 2)
-            .onEnded {
-                viewModel.reset()
-            }
-    }
-
     public init(today: Date, calendar: Calendar, scheme: CalendarScheme) {
         self.scheme = scheme
         viewModel = CalendarNavigationViewModel(calendar: calendar, today: today)
@@ -29,8 +22,26 @@ struct CalendarNavigationView: View {
 
     var body: some View {
         ZStack {
-            calendarView(month: viewModel.currentMonth)
-                .modifier(ShadingEffect(isEnabled: viewModel.isSelectorVisible))
+            calendarView()
+            monthSelectorView()
+            gestureNavigation()
+         }
+        .modifier(IWatchFontsAdjuster())
+        .modifier(IWatchDigitalCrownConnector(digitalCrownRotation: $viewModel.digitalCrownRotation))
+    }
+
+    private func calendarView() -> some View {
+        CalendarView(
+            today: viewModel.today,
+            month: viewModel.currentMonth,
+            calendar: viewModel.calendar,
+            scheme: scheme
+        )
+        .modifier(ShadingEffect(isEnabled: viewModel.isSelectorVisible))
+    }
+
+    private func monthSelectorView() -> some View {
+        Group {
             if viewModel.isSelectorVisible {
                 MonthSelectorView(month: viewModel.pickerMonth)
                     .scaleEffect(viewModel.monthSelectorViewScaleFactor)
@@ -41,20 +52,27 @@ struct CalendarNavigationView: View {
                     .offset(y: 50)
                 #endif
             }
-         }
-        .modifier(IWatchFontsAdjuster())
-        .modifier(IWatchDigitalCrownConnector(digitalCrownRotation: $viewModel.digitalCrownRotation))
-        .gesture(todaysTap)
-
+        }
     }
 
-    private func calendarView(month: Date) -> some View {
-        CalendarView(
-            today: viewModel.today,
-            month: month,
-            calendar: viewModel.calendar,
-            scheme: scheme
-        )
+    private func gestureNavigation() -> some View {
+        VStack {
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    viewModel.presentMonth(.previous)
+                }
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture(count: 2, perform: {
+                    viewModel.presentMonth(.current)
+                })
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    viewModel.presentMonth(.next)
+                }
+        }
     }
 
 }

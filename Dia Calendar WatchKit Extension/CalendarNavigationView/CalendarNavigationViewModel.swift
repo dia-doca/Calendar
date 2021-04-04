@@ -21,6 +21,12 @@ class CalendarNavigationViewModel: ObservableObject {
     let today: Date
     let calendar: Calendar
 
+    enum Month {
+        case previous
+        case current
+        case next
+    }
+
     @Published private var monthOffset = 0.0
     private var bag = Set<AnyCancellable>()
 
@@ -31,8 +37,15 @@ class CalendarNavigationViewModel: ObservableObject {
         bind()
     }
 
-    func reset() {
-        digitalCrownRotation = 0
+    func presentMonth(_ month: Month) {
+        switch month {
+        case .previous:
+            digitalCrownRotation -= 1
+        case .current:
+            digitalCrownRotation = 0
+        case .next:
+            digitalCrownRotation += 1
+        }
     }
 
     private func bind() {
