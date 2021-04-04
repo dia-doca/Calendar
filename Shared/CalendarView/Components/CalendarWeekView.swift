@@ -21,13 +21,13 @@ struct CalendarWeekView: View {
     }
 
     var body: some View {
-        if calendar.isWeekdayInWeekend(weekday) {
-            Text(calendar.veryShortWeekdaySymbols[weekday - 1])
-                .foregroundColor(scheme.weekendColor)
-        } else {
-            Text(calendar.veryShortWeekdaySymbols[weekday - 1])
-                .foregroundColor(scheme.weekdayColor)
-        }
+        Text(calendar.veryShortWeekdaySymbols[weekday - 1])
+            .foregroundColor(
+                calendar.isWeekdayInWeekend(weekday)
+                    ? scheme.weekendColor
+                    : scheme.weekdayColor
+            )
+            .fixedSize()
     }
 
 }

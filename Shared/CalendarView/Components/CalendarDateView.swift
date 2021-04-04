@@ -37,6 +37,7 @@ struct CalendarDateView: View {
                     scheme: scheme
                 )
             )
+            .fixedSize()
     }
 
 }

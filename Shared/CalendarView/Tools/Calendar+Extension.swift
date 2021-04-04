@@ -34,11 +34,14 @@ extension Calendar {
 
     func daysOfPage(for date: Date, weekday: Int) -> [Date] {
         let startDate = startOfPage(for: date)
-        let endDate = endOfPage(for: date)
         let searchDate = self.date(byAdding: DateComponents(day: -1), to: startDate)!
         var weekDays: [Date] = []
+
+        let weekOfMonth = self.maximumRange(of: .weekOfMonth)
+        let weekRows = (weekOfMonth?.upperBound ?? 0) - (weekOfMonth?.lowerBound ?? 0)
+
         enumerateDates(startingAfter: searchDate, matching: DateComponents(weekday: weekday), matchingPolicy: .strict) { (date, flag, stop) in
-            guard let date = date, date <= endDate else { stop = true; return }
+            guard let date = date, weekDays.count < weekRows else { stop = true; return }
             weekDays.append(date)
         }
         return weekDays

@@ -8,7 +8,11 @@
 import SwiftUI
 
 
-public struct CalendarView: View {
+public struct CalendarView: View, Equatable {
+
+    public static func == (lhs: CalendarView, rhs: CalendarView) -> Bool {
+        lhs.today == rhs.today && lhs.month == rhs.month
+    }
 
     private let today: Date
     private let month: Date
@@ -23,9 +27,9 @@ public struct CalendarView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading) {
             CalendarHeaderView(today: today, month: month, calendar: calendar, scheme: scheme.header)
-            CalendarBodyView(today: today, month: month, calendar: calendar, scheme: scheme.date)
+            CalendarBodyView(today: today, month: month, calendar: calendar, scheme: scheme.date).equatable()
         }
     }
 

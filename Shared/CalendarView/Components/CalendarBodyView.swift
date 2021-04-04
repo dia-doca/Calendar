@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct CalendarBodyView: View {
+struct CalendarBodyView: View, Equatable {
+
+    static func == (lhs: CalendarBodyView, rhs: CalendarBodyView) -> Bool {
+        lhs.today == rhs.today && lhs.month == rhs.month
+    }
 
     private let today: Date
     private let month: Date
@@ -24,8 +28,10 @@ struct CalendarBodyView: View {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(calendar.veryShortWeekdaySymbols.indices) { i in
-                VStack(spacing: 2) {
+                VStack(spacing: 0) {
                     CalendarWeekView(weekday: adjustedWeekdayIndex(i) + 1, calendar: calendar, scheme: scheme)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                     ForEach(calendar.daysOfPage(for: month, weekday: adjustedWeekdayIndex(i) + 1), id: \.self) { date in
                         CalendarDateView(
                             displayedDate: date,
@@ -34,7 +40,7 @@ struct CalendarBodyView: View {
                             calendar: calendar,
                             scheme: scheme
                         )
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
             }
