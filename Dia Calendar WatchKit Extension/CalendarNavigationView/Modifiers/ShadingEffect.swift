@@ -14,9 +14,10 @@ struct ShadingEffect: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .opacity(isEnabled ? 0.8 : 1)
-            .scaleEffect(isEnabled ? 0.95 : 1)
-            .animation(.default)
+            .opacity(isEnabled ? 0.7 : 1)
+            .scaleEffect(isEnabled ? 0.93 : 1)
+            .animation(.easeIn)
+            .blur(radius: isEnabled ? 3.0 : 0)
     }
 
 }
