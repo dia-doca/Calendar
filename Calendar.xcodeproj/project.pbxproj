@@ -13,7 +13,6 @@
 		2122539D2569145800FC22DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253882569145700FC22DB /* ContentView.swift */; };
 		2122539E2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
 		2122539F2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
-		2168A33825A9E860007B5783 /* MonthSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168A33525A9E860007B5783 /* MonthSelectorView.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C106A25AB74BE00C5660C /* ContentViewModel.swift */; };
 		21A2910225868A020098B441 /* IWatchFontsAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */; };
@@ -131,7 +130,6 @@
 		212253962569145800FC22DB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		212253982569145800FC22DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212253992569145800FC22DB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		2168A33525A9E860007B5783 /* MonthSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelectorView.swift; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevices.swift; sourceTree = "<group>"; };
 		218C106A25AB74BE00C5660C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		21A290FF25868A020098B441 /* IWatchFontsAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWatchFontsAdjuster.swift; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 			children = (
 				21E997C325A99A75006A75D9 /* Tools */,
 				21E9981C25A9A3FC006A75D9 /* Modifiers */,
-				2168A33525A9E860007B5783 /* MonthSelectorView.swift */,
 				21C09BC325865DAC00C80127 /* CalendarNavigationView.swift */,
 				21C0CD7F258AA39200B68F66 /* CalendarNavigationViewModel.swift */,
 			);
@@ -608,7 +605,6 @@
 				218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */,
 				21D1843425C6FD3F00D4B2C1 /* CalendarBodyView.swift in Sources */,
 				21C0CD82258AA39200B68F66 /* CalendarNavigationViewModel.swift in Sources */,
-				2168A33825A9E860007B5783 /* MonthSelectorView.swift in Sources */,
 				21A2910B25868E070098B441 /* ShadingEffect.swift in Sources */,
 				21D1843825C6FD3F00D4B2C1 /* Scheme.swift in Sources */,
 				21D1843A25C6FD3F00D4B2C1 /* Calendar+Extension.swift in Sources */,

@@ -28,7 +28,9 @@ public struct CalendarView: View, Equatable {
 
     public var body: some View {
         VStack(alignment: .leading) {
-            CalendarHeaderView(today: today, month: month, calendar: calendar, scheme: scheme.header)
+            if !scheme.header.isHidden {
+                CalendarHeaderView(today: today, month: month, calendar: calendar, scheme: scheme.header)
+            }
             CalendarBodyView(today: today, month: month, calendar: calendar, scheme: scheme.date).equatable()
         }
     }

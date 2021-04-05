@@ -15,9 +15,11 @@ public extension CalendarScheme {
 }
 
 extension HeaderScheme {
-    static let standard: HeaderScheme = .init(
-        monthColor: .red
-    )
+    #if os(watchOS)
+    static let standard: HeaderScheme = .init(monthColor: .red, isHidden: true)
+    #else
+    static let standard: HeaderScheme = .init(monthColor: .red, isHidden: false)
+    #endif
 }
 
 extension DateScheme {

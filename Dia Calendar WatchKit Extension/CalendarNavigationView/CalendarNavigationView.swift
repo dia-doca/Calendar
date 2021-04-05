@@ -23,7 +23,6 @@ struct CalendarNavigationView: View {
     var body: some View {
         ZStack {
             calendarView()
-            monthSelectorView()
             gestureNavigation()
          }
         .modifier(IWatchFontsAdjuster())
@@ -39,21 +38,6 @@ struct CalendarNavigationView: View {
             scheme: scheme
         )
         .modifier(ShadingEffect(isEnabled: viewModel.isSelectorVisible))
-    }
-
-    private func monthSelectorView() -> some View {
-        Group {
-            if viewModel.isSelectorVisible {
-                MonthSelectorView(month: viewModel.pickerMonth)
-                    .scaleEffect(viewModel.monthSelectorViewScaleFactor)
-                #if DEBUG
-                Text("\(viewModel.digitalCrownRotation)")
-                    .padding()
-                    .background(Color.black)
-                    .offset(y: 50)
-                #endif
-            }
-        }
     }
 
     private func gestureNavigation() -> some View {

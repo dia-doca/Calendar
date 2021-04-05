@@ -28,7 +28,7 @@ struct CalendarBodyView: View, Equatable {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(calendar.veryShortWeekdaySymbols.indices) { i in
-                VStack(spacing: 0) {
+                VStack(spacing: 5) {
                     CalendarWeekView(weekday: adjustedWeekdayIndex(i) + 1, calendar: calendar, scheme: scheme)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 

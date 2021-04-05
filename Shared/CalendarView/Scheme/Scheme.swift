@@ -15,6 +15,7 @@ public struct CalendarScheme {
 
 public struct HeaderScheme {
     let monthColor: Color
+    let isHidden: Bool
 }
 
 public struct DateScheme {

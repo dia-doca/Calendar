@@ -48,6 +48,7 @@ class CalendarNavigationViewModel: ObservableObject {
         case .next:
             digitalCrownRotation += 1
         }
+        playFeedback()
     }
 
     private func bind() {
@@ -116,6 +117,10 @@ class CalendarNavigationViewModel: ObservableObject {
         calendar.isDate(date, inSameYearAs: today)
             ? date.string(for: .month)
             : date.string(for: .monthShort) + " '" + date.string(for: .year)
+    }
+
+    private func playFeedback() {
+        WKInterfaceDevice.current().play(.click)
     }
 
 }
