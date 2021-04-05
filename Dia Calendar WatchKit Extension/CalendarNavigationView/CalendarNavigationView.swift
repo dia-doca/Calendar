@@ -28,6 +28,7 @@ struct CalendarNavigationView: View {
          }
         .modifier(IWatchFontsAdjuster())
         .modifier(IWatchDigitalCrownConnector(digitalCrownRotation: $viewModel.digitalCrownRotation))
+        .navigationTitle({ titleView() })
     }
 
     private func calendarView() -> some View {
@@ -72,6 +73,14 @@ struct CalendarNavigationView: View {
                 .onTapGesture {
                     viewModel.presentMonth(.next)
                 }
+        }
+    }
+
+    private func titleView() -> some View {
+        HStack {
+            Text(viewModel.title)
+                .foregroundColor(scheme.header.monthColor)
+            Spacer()
         }
     }
 

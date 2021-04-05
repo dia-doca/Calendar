@@ -18,6 +18,8 @@ class CalendarNavigationViewModel: ObservableObject {
     @Published var pickerMonth = Date()
     @Published var currentMonth = Date()
 
+    @Published var title = ""
+
     let today: Date
     let calendar: Calendar
 
@@ -49,6 +51,11 @@ class CalendarNavigationViewModel: ObservableObject {
     }
 
     private func bind() {
+
+        $pickerMonth
+            .map({ [unowned self] date in makeTitle(from: date) })
+            .assign(to: \.title, on: self)
+            .store(in: &bag)
 
         $digitalCrownRotation
             .dropFirst()
@@ -103,6 +110,12 @@ class CalendarNavigationViewModel: ObservableObject {
             .assign(to: \.isSelectorVisible, on: self)
             .store(in: &bag)
 
+    }
+
+    private func makeTitle(from date: Date) -> String {
+        calendar.isDate(date, inSameYearAs: today)
+            ? date.string(for: .month)
+            : date.string(for: .monthShort) + " '" + date.string(for: .year)
     }
 
 }
