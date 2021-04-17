@@ -31,24 +31,22 @@ struct CalendarDateLabel: ViewModifier {
         self.scheme = scheme
     }
 
-    func body(content: Content) -> some View {
-        Group {
-            switch getDayType(from: displayedDate, calendar: calendar) {
-            case .today:
-                content.foregroundColor(scheme.today.foregroundColor)
-                    .background(
-                        Circle()
-                            .inset(by: -6)
-                            .offset(y: 1)
-                            .fill(scheme.today.backgroundColor)
-                    )
-            case .weekday:
-                content.foregroundColor(scheme.weekdayColor)
-            case .weekend:
-                content.foregroundColor(scheme.weekendColor)
-            case .outOfMonth:
-                content.foregroundColor(scheme.outOfMonthColor)
-            }
+    @ViewBuilder func body(content: Content) -> some View {
+        switch getDayType(from: displayedDate, calendar: calendar) {
+        case .today:
+            content.foregroundColor(scheme.today.foregroundColor)
+                .background(
+                    Circle()
+                        .inset(by: -6)
+                        .offset(y: 1)
+                        .fill(scheme.today.backgroundColor)
+                )
+        case .weekday:
+            content.foregroundColor(scheme.weekdayColor)
+        case .weekend:
+            content.foregroundColor(scheme.weekendColor)
+        case .outOfMonth:
+            content.foregroundColor(scheme.outOfMonthColor)
         }
     }
 
