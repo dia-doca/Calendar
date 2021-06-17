@@ -13,6 +13,9 @@
 		2122539D2569145800FC22DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253882569145700FC22DB /* ContentView.swift */; };
 		2122539E2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
 		2122539F2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
+		215BFFD4267B230F000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
+		215BFFD5267B230F000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
+		215BFFD6267B262D000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
 		2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */; };
 		218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C106A25AB74BE00C5660C /* ContentViewModel.swift */; };
 		218ED8F9262AFA3700AFDEF3 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218ED8F3262AF90A00AFDEF3 /* PageController.swift */; };
@@ -131,6 +134,7 @@
 		212253962569145800FC22DB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		212253982569145800FC22DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212253992569145800FC22DB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsManager.swift; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevices.swift; sourceTree = "<group>"; };
 		218C106A25AB74BE00C5660C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		218ED8F3262AF90A00AFDEF3 /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				212253872569145700FC22DB /* CalendarApp.swift */,
 				212253882569145700FC22DB /* ContentView.swift */,
 				212253892569145800FC22DB /* Assets.xcassets */,
+				215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 				2122539C2569145800FC22DB /* ContentView.swift in Sources */,
 				21CDD15C25C727E500950CDE /* SimulatorDevices.swift in Sources */,
 				2122539A2569145800FC22DB /* CalendarApp.swift in Sources */,
+				215BFFD4267B230F000C53D5 /* CalendarEventsManager.swift in Sources */,
 				21D1844325C6FD3F00D4B2C1 /* CalendarDateLabel.swift in Sources */,
 				21D1843F25C6FD3F00D4B2C1 /* DateFormatter+Constants.swift in Sources */,
 				21D1844525C6FD3F00D4B2C1 /* Scheme.swift in Sources */,
@@ -593,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2122539D2569145800FC22DB /* ContentView.swift in Sources */,
+				215BFFD5267B230F000C53D5 /* CalendarEventsManager.swift in Sources */,
 				2122539B2569145800FC22DB /* CalendarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +610,7 @@
 			files = (
 				21D1843625C6FD3F00D4B2C1 /* CalendarDateLabel.swift in Sources */,
 				21E9982825A9A4AA006A75D9 /* Comparable+Bounded.swift in Sources */,
+				215BFFD6267B262D000C53D5 /* CalendarEventsManager.swift in Sources */,
 				2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */,
 				21AA3E5A256C35B000A2291D /* ContentView.swift in Sources */,
 				218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */,
