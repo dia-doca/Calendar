@@ -13,11 +13,24 @@ struct ContentView: View {
     @ObservedObject private var viewModel = ViewModel()
 
     var body: some View {
+        PageControllerView(pageCount: 2) {
+            calendarView
+            eventsView
+        }
+    }
+
+    private var calendarView: some View {
         CalendarNavigationView(
             today: viewModel.today,
             calendar: viewModel.calendar,
             scheme: viewModel.scheme
         )
+    }
+
+    private var eventsView: some View {
+        ZStack {
+            Text("Events")
+        }
     }
 
 }
