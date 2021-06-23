@@ -16,6 +16,8 @@ extension ContentView {
         @Published private (set) var today = Date()
         @Published private (set) var isEventsPageAvailable = false
 
+        @Published private (set) var todaysEvents = [CalendarEventViewModel]()
+
         private let eventsManager = CalendarEventsManager()
         
         let calendar = Calendar.current
@@ -29,6 +31,7 @@ extension ContentView {
             activateMidnightTimer()
             eventsManager.requestAccess()
             eventsManager.$isGranted.assign(to: &$isEventsPageAvailable)
+            eventsManager.$events.assign(to: &$todaysEvents)
         }
 
         // MARK: Private

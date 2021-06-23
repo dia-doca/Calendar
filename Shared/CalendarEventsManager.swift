@@ -5,19 +5,22 @@
 //  Created by Ivan Druzhinin on 17.06.2021.
 //
 
-import Foundation
+import UIKit
 import EventKit
 import Combine
 
 
 final class CalendarEventsManager {
 
-    @Published private (set) var events = [String]()
+    @Published private (set) var events = [CalendarEventViewModel]()
     @Published private (set) var isGranted = false
 
     private lazy var store = EKEventStore()
 
+    private var bag = Set<AnyCancellable>()
+
     init() {
+        addRequestEventsObserver()
     }
 
     func requestAccess() {
@@ -29,4 +32,25 @@ final class CalendarEventsManager {
         }
     }
 
+    private func addRequestEventsObserver() {
+        $isGranted
+            .filter({ $0 })
+            .sink(receiveValue: { [unowned self] _ in self.events = self.todaysEvents() })
+            .store(in: &bag)
+    }
+
+    func todaysEvents() -> [CalendarEventViewModel] {
+        let today = Date()
+        let predicate = store.predicateForEvents(withStart: today, end: today, calendars: nil)
+        let events = store.events(matching: predicate)
+        return events.map({
+            CalendarEventViewModel(title: $0.title, color: $0.calendar.cgColor)
+        })
+    }
+
+}
+
+struct CalendarEventViewModel: Hashable {
+    let title: String
+    let color: CGColor
 }

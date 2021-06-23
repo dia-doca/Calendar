@@ -13,6 +13,7 @@
 		2122539D2569145800FC22DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212253882569145700FC22DB /* ContentView.swift */; };
 		2122539E2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
 		2122539F2569145800FC22DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212253892569145800FC22DB /* Assets.xcassets */; };
+		2124CDCA267F6AC3004A2F4B /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124CDC9267F6AC3004A2F4B /* EventsListView.swift */; };
 		215BFFD4267B230F000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
 		215BFFD5267B230F000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
 		215BFFD6267B262D000C53D5 /* CalendarEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */; };
@@ -134,6 +135,7 @@
 		212253962569145800FC22DB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		212253982569145800FC22DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212253992569145800FC22DB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		2124CDC9267F6AC3004A2F4B /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		215BFFD3267B230F000C53D5 /* CalendarEventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsManager.swift; sourceTree = "<group>"; };
 		2170CE5B2583E8BF00E4F1BB /* SimulatorDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevices.swift; sourceTree = "<group>"; };
 		218C106A25AB74BE00C5660C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				21E997E725A9A0A3006A75D9 /* CalendarNavigationView */,
 				21BA513D25718D8D0040C220 /* Complications */,
 				218ED8F3262AF90A00AFDEF3 /* PageController.swift */,
+				2124CDC9267F6AC3004A2F4B /* EventsListView.swift */,
 				21AA3E57256C35B000A2291D /* CalendarApp.swift */,
 				21AA3E59256C35B000A2291D /* ContentView.swift */,
 				218C106A25AB74BE00C5660C /* ContentViewModel.swift */,
@@ -613,6 +616,7 @@
 				215BFFD6267B262D000C53D5 /* CalendarEventsManager.swift in Sources */,
 				2170CE5E2583E8BF00E4F1BB /* SimulatorDevices.swift in Sources */,
 				21AA3E5A256C35B000A2291D /* ContentView.swift in Sources */,
+				2124CDCA267F6AC3004A2F4B /* EventsListView.swift in Sources */,
 				218C106B25AB74BE00C5660C /* ContentViewModel.swift in Sources */,
 				21D1843425C6FD3F00D4B2C1 /* CalendarBodyView.swift in Sources */,
 				21C0CD82258AA39200B68F66 /* CalendarNavigationViewModel.swift in Sources */,

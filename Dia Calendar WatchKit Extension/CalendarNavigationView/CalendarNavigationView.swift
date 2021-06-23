@@ -66,6 +66,7 @@ struct CalendarNavigationView: View {
                 .foregroundColor(scheme.header.monthColor)
             Spacer()
         }
+        .animation(.none)
     }
 
 }

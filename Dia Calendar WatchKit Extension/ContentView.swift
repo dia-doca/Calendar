@@ -42,9 +42,7 @@ struct ContentView: View {
     }
 
     private var eventsView: some View {
-        ZStack {
-            Text("Events")
-        }
+        EventsListView(events: viewModel.todaysEvents)
     }
 
 }

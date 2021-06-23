@@ -17,7 +17,6 @@ struct ShadingEffect: ViewModifier {
             .opacity(isEnabled ? 0.7 : 1)
             .scaleEffect(isEnabled ? 0.93 : 1)
             .animation(.easeIn)
-            .blur(radius: isEnabled ? 3.0 : 0)
     }
 
 }
