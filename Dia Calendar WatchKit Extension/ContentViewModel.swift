@@ -14,12 +14,7 @@ extension ContentView {
     final class ViewModel: ObservableObject {
 
         @Published private (set) var today = Date()
-        @Published private (set) var isEventsPageAvailable = false
 
-        @Published private (set) var todaysEvents = [CalendarEventViewModel]()
-
-        private let eventsManager = CalendarEventsManager()
-        
         let calendar = Calendar.current
         let scheme: CalendarScheme = .standard
 
@@ -29,9 +24,6 @@ extension ContentView {
         init() {
             configureApplicationObserver()
             activateMidnightTimer()
-            eventsManager.requestAccess()
-            eventsManager.$isGranted.assign(to: &$isEventsPageAvailable)
-            eventsManager.$events.assign(to: &$todaysEvents)
         }
 
         // MARK: Private

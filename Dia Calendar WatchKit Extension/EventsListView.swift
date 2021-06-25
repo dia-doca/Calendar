@@ -17,8 +17,27 @@ struct EventsListView: View {
     }
 
     var body: some View {
+        completeList
+    }
+
+    @ViewBuilder
+    private var completeList: some View {
+        if events.isEmpty {
+            emptyList
+        } else {
+            eventsLiat
+        }
+    }
+
+    private var eventsLiat: some View {
         List(events, id: \.self) { event in
             CalendarEventRow(event: event)
+        }
+    }
+
+    private var emptyList: some View {
+        List {
+            Text("No events").foregroundColor(.secondary)
         }
     }
 

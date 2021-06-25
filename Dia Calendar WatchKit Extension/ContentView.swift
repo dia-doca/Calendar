@@ -13,24 +13,7 @@ struct ContentView: View {
     @ObservedObject private var viewModel = ViewModel()
 
     var body: some View {
-        makeContentView()
-    }
-
-    @ViewBuilder
-    private func makeContentView() -> some View {
-        if viewModel.isEventsPageAvailable {
-            pageControllerView
-        } else {
-            calendarView
-        }
-    }
-
-    private var pageControllerView: some View {
-        PageControllerView(pageCount: 2) {
-            calendarView
-            eventsView
-        }
-
+        calendarView
     }
 
     private var calendarView: some View {
@@ -39,10 +22,6 @@ struct ContentView: View {
             calendar: viewModel.calendar,
             scheme: viewModel.scheme
         )
-    }
-
-    private var eventsView: some View {
-        EventsListView(events: viewModel.todaysEvents)
     }
 
 }

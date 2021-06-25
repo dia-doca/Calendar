@@ -13,6 +13,8 @@ struct CalendarNavigationView: View {
 
     @ObservedObject private var viewModel: CalendarNavigationViewModel
 
+    @State private var isShowingCalendarEventsListView = false
+
     private let scheme: CalendarScheme
 
     public init(today: Date, calendar: Calendar, scheme: CalendarScheme) {
@@ -22,15 +24,20 @@ struct CalendarNavigationView: View {
 
     var body: some View {
         ZStack {
-            calendarView()
-            gestureNavigation()
+            navigationView
+            calendarView
+            gesturesView
          }
         .modifier(IWatchFontsAdjuster())
         .modifier(IWatchDigitalCrownConnector(digitalCrownRotation: $viewModel.digitalCrownRotation))
-        .navigationTitle({ titleView() })
+        .navigationTitle({ titleView(viewModel.title) })
     }
 
-    private func calendarView() -> some View {
+    private var navigationView: some View {
+        NavigationLink(destination: eventsView, isActive: $isShowingCalendarEventsListView) { EmptyView() }.hidden()
+    }
+
+    private var calendarView: some View {
         CalendarView(
             today: viewModel.today,
             month: viewModel.currentMonth,
@@ -40,33 +47,34 @@ struct CalendarNavigationView: View {
         .modifier(ShadingEffect(isEnabled: viewModel.isSelectorVisible))
     }
 
-    private func gestureNavigation() -> some View {
-        VStack {
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    viewModel.presentMonth(.previous)
-                }
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture(count: 2, perform: {
+    private var gesturesView: some View {
+        Color.clear
+            .contentShape(Rectangle())
+            .onTapGesture(count: 1, perform: {
+                if viewModel.isToday {
+                    isShowingCalendarEventsListView = true
+                } else {
                     viewModel.presentMonth(.current)
-                })
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    viewModel.presentMonth(.next)
                 }
-        }
+            })
     }
 
-    private func titleView() -> some View {
-        HStack {
-            Text(viewModel.title)
-                .foregroundColor(scheme.header.monthColor)
-            Spacer()
+    private func titleView(_ title: String) -> some View {
+        NavigationTitleView(title: title, color: scheme.header.monthColor)
+    }
+
+    @ViewBuilder
+    private var eventsView: some View {
+        if viewModel.isCalendarEventsGranted {
+            let list = viewModel.getCalendarEventsList()
+            EventsListView(events: list.events)
+                .navigationTitle({ titleView(list.title) })
+        } else {
+            let warning = viewModel.getCalendarEventsAccessDenied()
+            Text(warning.message)
+                .padding()
+                .navigationTitle({ titleView(warning.title) })
         }
-        .animation(.none)
     }
 
 }

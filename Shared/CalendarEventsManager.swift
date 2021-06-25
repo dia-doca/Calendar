@@ -12,16 +12,11 @@ import Combine
 
 final class CalendarEventsManager {
 
-    @Published private (set) var events = [CalendarEventViewModel]()
     @Published private (set) var isGranted = false
 
     private lazy var store = EKEventStore()
 
     private var bag = Set<AnyCancellable>()
-
-    init() {
-        addRequestEventsObserver()
-    }
 
     func requestAccess() {
         store.requestAccess(to: .event) { [weak self] granted, error in
@@ -32,16 +27,13 @@ final class CalendarEventsManager {
         }
     }
 
-    private func addRequestEventsObserver() {
-        $isGranted
-            .filter({ $0 })
-            .sink(receiveValue: { [unowned self] _ in self.events = self.todaysEvents() })
-            .store(in: &bag)
-    }
-
-    func todaysEvents() -> [CalendarEventViewModel] {
+    func getTodaysEvents() -> [CalendarEventViewModel] {
+        guard isGranted else { return [] }
+        let calendar = Calendar.current
         let today = Date()
-        let predicate = store.predicateForEvents(withStart: today, end: today, calendars: nil)
+        let start = calendar.startOfDay(for: today)
+        let end = calendar.date(byAdding: DateComponents(day: 1, second: -1), to: start) ?? today
+        let predicate = store.predicateForEvents(withStart: start, end: end, calendars: nil)
         let events = store.events(matching: predicate)
         return events.map({
             CalendarEventViewModel(title: $0.title, color: $0.calendar.cgColor)

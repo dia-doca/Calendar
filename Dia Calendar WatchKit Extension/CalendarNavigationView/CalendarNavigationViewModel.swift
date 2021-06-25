@@ -10,15 +10,20 @@ import Combine
 
 class CalendarNavigationViewModel: ObservableObject {
 
-    @Published var isSelectorVisible = false
-    @Published var monthSelectorViewScaleFactor: CGFloat = 0.0
-
     @Published var digitalCrownRotation = 0.0
+    var isToday: Bool { digitalCrownRotation == 0 }
 
-    @Published var pickerMonth = Date()
-    @Published var currentMonth = Date()
+    @Published private (set) var isSelectorVisible = false
+    @Published private (set) var monthSelectorViewScaleFactor: CGFloat = 0.0
 
-    @Published var title = ""
+    @Published private (set) var pickerMonth = Date()
+    @Published private (set) var currentMonth = Date()
+
+    @Published private (set) var title = ""
+
+    @Published private (set) var isCalendarEventsGranted = false
+
+    private let eventsManager = CalendarEventsManager()
 
     let today: Date
     let calendar: Calendar
@@ -37,6 +42,7 @@ class CalendarNavigationViewModel: ObservableObject {
         self.today = today
         currentMonth = today
         bind()
+        configureEvents()
     }
 
     func presentMonth(_ month: Month) {
@@ -51,7 +57,17 @@ class CalendarNavigationViewModel: ObservableObject {
         playFeedback()
     }
 
+    func getCalendarEventsList() -> (title: String, events: [CalendarEventViewModel]) {
+        (title: "Today", events: eventsManager.getTodaysEvents())
+    }
+
+    func getCalendarEventsAccessDenied() -> (title: String, message: String) {
+        (title: "Events", message: "Access to the calendar is not granted. Grant access from the system settings.")
+    }
+
     private func bind() {
+
+        let throttleDuration: RunLoop.SchedulerTimeType.Stride = 0.05
 
         $pickerMonth
             .map({ [unowned self] date in makeTitle(from: date) })
@@ -60,7 +76,7 @@ class CalendarNavigationViewModel: ObservableObject {
 
         $digitalCrownRotation
             .dropFirst()
-            .throttle(for: 0.1, scheduler: RunLoop.main, latest: true)
+            .throttle(for: throttleDuration, scheduler: RunLoop.main, latest: true)
             .map { [weak self] crownRotation in
                 guard let strongSelf = self else { return 0.0 }
                 let monthComponent = crownRotation > strongSelf.monthOffset ? floor(crownRotation) : ceil(crownRotation)
@@ -71,7 +87,7 @@ class CalendarNavigationViewModel: ObservableObject {
 
         $digitalCrownRotation
             .dropFirst()
-            .throttle(for: 0.1, scheduler: RunLoop.main, latest: true)
+            .throttle(for: throttleDuration, scheduler: RunLoop.main, latest: true)
             .map { [weak self] rotation in
                 guard let strongSelf = self else { return 0.0 }
                 return 1.0 + CGFloat(abs(rotation - strongSelf.monthOffset)).bounded(in: 0...1) * 0.3
@@ -90,7 +106,7 @@ class CalendarNavigationViewModel: ObservableObject {
 
         $monthOffset
             .dropFirst()
-            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .debounce(for: throttleDuration, scheduler: RunLoop.main)
             .map { [weak self] offset in
                 guard let strongSelf = self else { return Date() }
                 return strongSelf.calendar.date(byAdding: DateComponents(month: Int(offset)), to: strongSelf.today)!
@@ -106,11 +122,16 @@ class CalendarNavigationViewModel: ObservableObject {
 
         $digitalCrownRotation
             .dropFirst()
-            .throttle(for: 0.1, scheduler: RunLoop.main, latest: false)
+            .throttle(for: throttleDuration, scheduler: RunLoop.main, latest: false)
             .map { _ in true }
             .assign(to: \.isSelectorVisible, on: self)
             .store(in: &bag)
 
+    }
+
+    private func configureEvents() {
+        eventsManager.requestAccess()
+        eventsManager.$isGranted.assign(to: &$isCalendarEventsGranted)
     }
 
     private func makeTitle(from date: Date) -> String {
