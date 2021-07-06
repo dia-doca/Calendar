@@ -54,8 +54,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Dia Calendar">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
@@ -63,7 +65,7 @@
             BlueprintName = "Dia Calendar WatchKit App"
             ReferencedContainer = "container:Calendar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,8 +73,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Dia Calendar">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
@@ -80,7 +84,16 @@
             BlueprintName = "Dia Calendar WatchKit App"
             ReferencedContainer = "container:Calendar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "21AA3E45256C35AF00A2291D"
+            BuildableName = "Dia Calendar WatchKit App.app"
+            BlueprintName = "Dia Calendar WatchKit App"
+            ReferencedContainer = "container:Calendar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
