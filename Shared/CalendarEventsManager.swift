@@ -35,8 +35,22 @@ final class CalendarEventsManager {
         let end = calendar.date(byAdding: DateComponents(day: 1, second: -1), to: start) ?? today
         let predicate = store.predicateForEvents(withStart: start, end: end, calendars: nil)
         let events = store.events(matching: predicate)
-        return events.map({
-            CalendarEventViewModel(title: $0.title, color: $0.calendar.cgColor)
+        return events
+            .sorted(by: { $0.startDate < $1.startDate })
+            .map({
+            CalendarEventViewModel(
+                title: $0.title,
+                color: $0.calendar.cgColor,
+                calendar: $0.calendar.title,
+                startDate: $0.startDate,
+                endDate: $0.endDate,
+                isAllDay: $0.isAllDay,
+                location: $0.location,
+                notes: $0.hasNotes ? $0.notes : nil,
+                hasRecurrenceRules: $0.hasRecurrenceRules,
+                frequency: $0.recurrenceRules?.first?.frequency,
+                interval: $0.recurrenceRules?.first?.interval
+            )
         })
     }
 
@@ -45,4 +59,13 @@ final class CalendarEventsManager {
 struct CalendarEventViewModel: Hashable {
     let title: String
     let color: CGColor
+    let calendar: String
+    let startDate: Date
+    let endDate: Date
+    let isAllDay: Bool
+    let location: String?
+    let notes: String?
+    let hasRecurrenceRules: Bool
+    let frequency: EKRecurrenceFrequency?
+    let interval: Int?
 }
